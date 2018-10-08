@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>asciinema录制终端会话并通过网页展示 - Lucas - An InfoSec Lover</title>
+  <link rel="alternate" hreflang="en" href="https://luxshell.github.io/" />
+<link rel="stylesheet" type="text/css" href="/css/asciinema-player.css" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Lucas Wilson" />
+  <meta name="description" content="今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&amp;ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。 " />
+
+  <meta name="keywords" content="Hugo, theme, jane" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+<link rel="canonical" href="https://luxshell.github.io/post/asciinema-somthing-stuff/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="asciinema录制终端会话并通过网页展示" />
+<meta property="og:description" content="今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luxshell.github.io/post/asciinema-somthing-stuff/" />
+
+
+
+<meta property="article:published_time" content="2018-06-17T23:03:08-04:00"/>
+
+<meta property="article:modified_time" content="2018-06-17T23:03:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="asciinema录制终端会话并通过网页展示">
+<meta itemprop="description" content="今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。
+">
+
+
+<meta itemprop="datePublished" content="2018-06-17T23:03:08-04:00" />
+<meta itemprop="dateModified" content="2018-06-17T23:03:08-04:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="asciinema,*nix,video record," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="asciinema录制终端会话并通过网页展示"/>
+<meta name="twitter:description" content="今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Lucas&#39; Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="https://gohugo.io">
+        <li class="mobile-menu-item">external-link</li>
+      </a>
+  </ul>
+</nav>
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Lucas&#39; Blog
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://gohugo.io" rel="noopener" target="_blank">
+              external-link
+            <i class="iconfont icon-new-window"></i>
+            </a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">asciinema录制终端会话并通过网页展示</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-06-17 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+              <a href="/categories/tech/"> Tech </a>
+            
+              <a href="/categories/skills/"> Skills </a>
+            
+          </div>
+        <span class="more-meta"> 0 words </span>
+        <span class="more-meta"> 0 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#官方网站">官方网站</a></li>
+<li><a href="#使用说明">使用说明</a></li>
+<li><a href="#安装">安装</a></li>
+<li><a href="#简单地开始使用">简单地开始使用</a></li>
+<li><a href="#将录制的内容嵌入到网页中">将录制的内容嵌入到网页中</a></li>
+<li><a href="#实例演示">实例演示</a></li>
+<li><a href="#来源和引文">来源和引文</a></li>
+<li><a href="#责任声明">责任声明</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。
+</p>
+
+<h2 id="官方网站">官方网站</h2>
+
+<p><a href="https://asciinema.org/">https://asciinema.org/</a></p>
+
+<h2 id="使用说明">使用说明</h2>
+
+<p>大家可以在官网注册账号，可以利用官方提供的服务共享视频，不过需要提交资源。虽说官方给出录制的内容默认是私有的，毕竟东西在自己手里放心，万一记录有敏感信息多不好，这里不通过上传来分享。</p>
+
+<h2 id="安装">安装</h2>
+
+<p>asciinema支持*nix类系统，甚至在安卓的termux也支持安装。这里以ubuntu为例。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt-get update
+$ sudo apt-get install asciinema</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="简单地开始使用">简单地开始使用</h2>
+
+<p>录制会话并保存至<code>/tmp/demo.json</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ asciinema rec /tmp/demo.json</code></pre></td></tr></table>
+</div>
+</div>
+<p>如果在录制过程中忽略太长时间的滞留状态，可以使用 <code>-i</code>参数设定最长等待时间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ asciinema rec -i <span class="m">2</span>.5 /tmp/demo.json</code></pre></td></tr></table>
+</div>
+</div>
+<p>进行回放</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ asciinema play /tmp/demo.json</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="将录制的内容嵌入到网页中">将录制的内容嵌入到网页中</h2>
+
+<p>新建一个工作目录，并切换至目录，将录制的内容移动到当前目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir asciinema_stuff
+$ <span class="nb">cd</span> asciinema_stuff
+$ mv /tmp/demo.json .</code></pre></td></tr></table>
+</div>
+</div>
+<p>到asciinema-player指定的<a href="https://github.com/asciinema/asciinema-player/releases">发布页面</a>
+下载<code>asciinema-player.css</code>和<code>asciinema-player.js</code>两个文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.css
+$ wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.js</code></pre></td></tr></table>
+</div>
+</div>
+<p>新建一个示范html文件,展示的就是简单的页面，小伙伴根据自家情况装饰一下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ vi test.html</code></pre></td></tr></table>
+</div>
+</div>
+<p>核心内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;asciinema-player.css&#34;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">asciinema-player</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;demo.json&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">asciinema-player</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;asciinema-player.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="实例演示">实例演示</h2>
+
+<p><asciinema-player src="/videos/demo_0618.json"></asciinema-player>
+<script src="/js/asciinema-player.js"></script></p>
+
+<h2 id="来源和引文">来源和引文</h2>
+
+<p><a href="https://github.com/asciinema/asciinema-player">https://github.com/asciinema/asciinema-player</a></p>
+
+<h2 id="责任声明">责任声明</h2>
+
+<p>希望各位遵守法律，本博文仅作学习研究分享，不得利用于损害他人利益之事。</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Lucas Wilson</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-06-17</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/asciinema/">asciinema</a>
+          
+          <a href="/tags/nix/">*nix</a>
+          
+          <a href="/tags/video-record/">video record</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/muti-opreating-system-on-pi3b/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">树莓派3B多系统实践</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/set-up-hugo-with-github-pages/">
+            <span class="next-text nav-default">将基于hugo的静态博客部署至Github Pages</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lucashell@protonmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+      <a href="https://twitter.com/lucaswi49152666" rel="me noopener" class="iconfont icon-twitter"
+        title="twitter" target="_blank">
+      </a>
+      <a href="https://www.facebook.com/lucaswilson02" rel="me noopener" class="iconfont icon-facebook"
+        title="facebook" target="_blank">
+      </a>
+      <a href="https://github.com/luxshell" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+      <a href="https://weibo.com/p/1005056539138381/home?from=page_100505&amp;mod=TAB&amp;is_all=1#place" rel="me noopener" class="iconfont icon-weibo"
+        title="weibo" target="_blank">
+      </a>
+      <a href="https://www.zhihu.com/people/lucaswilson-78/activities" rel="me noopener" class="iconfont icon-zhihu"
+        title="zhihu" target="_blank">
+      </a>
+  <a href="https://luxshell.github.io/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2017 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">Lucas Wilson</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+
+</body>
+</html>

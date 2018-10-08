@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning on Lucas - An InfoSec Lover</title>
+    <link>https://luxshell.github.io/categories/learning/</link>
+    <description>Recent content in Learning on Lucas - An InfoSec Lover</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Lucas Wilson</copyright>
+    <lastBuildDate>Mon, 17 Sep 2018 23:00:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://luxshell.github.io/categories/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>golang实现简易出口IP查看器</title>
+      <link>https://luxshell.github.io/post/my_external_ip_address/</link>
+      <pubDate>Mon, 17 Sep 2018 23:00:53 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/post/my_external_ip_address/</guid>
+      <description>&lt;p&gt;出于乐趣，想做一个简易的出口IP查看器，放到自己的VPS上，可以随时查看自己的IP信息，顺便学习golang实现简单http服务器。与各位分享。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Video Record on Lucas - An InfoSec Lover</title>
+    <link>https://luxshell.github.io/tags/video-record/</link>
+    <description>Recent content in Video Record on Lucas - An InfoSec Lover</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Lucas Wilson</copyright>
+    <lastBuildDate>Sun, 17 Jun 2018 23:03:08 -0400</lastBuildDate>
+    
+	<atom:link href="https://luxshell.github.io/tags/video-record/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>asciinema录制终端会话并通过网页展示</title>
+      <link>https://luxshell.github.io/post/asciinema-somthing-stuff/</link>
+      <pubDate>Sun, 17 Jun 2018 23:03:08 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/post/asciinema-somthing-stuff/</guid>
+      <description>&lt;p&gt;今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&amp;ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

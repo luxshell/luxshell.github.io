@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Masscan on Lucas - An InfoSec Lover</title>
+    <link>https://luxshell.github.io/tags/masscan/</link>
+    <description>Recent content in Masscan on Lucas - An InfoSec Lover</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Lucas Wilson</copyright>
+    <lastBuildDate>Sun, 02 Apr 2017 08:33:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://luxshell.github.io/tags/masscan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nmap通过代理进行端口扫描</title>
+      <link>https://luxshell.github.io/post/nmap_scan_through_proxy/</link>
+      <pubDate>Sun, 02 Apr 2017 08:33:29 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/post/nmap_scan_through_proxy/</guid>
+      <description>&lt;p&gt;在渗透测试过程中，当你有幸得到一个入口，需要对其内部进一步探测，比如端口扫描，有人会在入口安装个nmap或者masscan之类的知名软体，有人会自己实现一个简易的端口多线程扫描程式，而还有人更乐意借助入口暂时开放一个代理端口，不仅完成端口扫描，也为后续渗透banner获取等提供便利。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

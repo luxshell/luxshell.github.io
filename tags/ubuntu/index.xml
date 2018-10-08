@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Lucas - An InfoSec Lover</title>
+    <link>https://luxshell.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Lucas - An InfoSec Lover</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Lucas Wilson</copyright>
+    <lastBuildDate>Tue, 01 May 2018 09:29:57 -0400</lastBuildDate>
+    
+	<atom:link href="https://luxshell.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>将基于hugo的静态博客部署至Github Pages</title>
+      <link>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</link>
+      <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</guid>
+      <description>&lt;p&gt;今天5月1号，是个特别的日子。首先祝愿广大劳动者劳必有获得。怀着一颗冷静的心，开始找回去年这个时候的自己，那时刚接触Github Pages,觉着是个发布博客的不可多得的形式。博主为了能长期养成写博客的习惯还专门布置了一台虚拟机。Ubuntu18.04&amp;hellip;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

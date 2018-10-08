@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>树莓派3B多系统实践 - Lucas - An InfoSec Lover</title>
+  <link rel="alternate" hreflang="en" href="https://luxshell.github.io/" />
+<link rel="stylesheet" type="text/css" href="/css/asciinema-player.css" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Lucas Wilson" />
+  <meta name="description" content="相信大家都有一个共识，树莓派的可折腾性带来的乐趣远大于其本身。正应了那句话，麻雀虽小但五脏俱全。在博主这主要给它定义了三种用途，也对应着三个系统，分别是Raspbian、Kali和OpenWRT。Raspbian可用作日常上网、临时便捷服务器、测试用机等。Kali提供了便利的审计软件及很多受欢迎的开源工具，树莓派搭载它可以随时随地对网络进行测试及管理。当然，OpenWRT实现了回到家它就变身一个智能路由器。相信各位都很喜欢。 " />
+
+  <meta name="keywords" content="Hugo, theme, jane" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+<link rel="canonical" href="https://luxshell.github.io/post/muti-opreating-system-on-pi3b/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="树莓派3B多系统实践" />
+<meta property="og:description" content="相信大家都有一个共识，树莓派的可折腾性带来的乐趣远大于其本身。正应了那句话，麻雀虽小但五脏俱全。在博主这主要给它定义了三种用途，也对应着三个系统，分别是Raspbian、Kali和OpenWRT。Raspbian可用作日常上网、临时便捷服务器、测试用机等。Kali提供了便利的审计软件及很多受欢迎的开源工具，树莓派搭载它可以随时随地对网络进行测试及管理。当然，OpenWRT实现了回到家它就变身一个智能路由器。相信各位都很喜欢。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luxshell.github.io/post/muti-opreating-system-on-pi3b/" />
+
+
+
+<meta property="article:published_time" content="2018-08-26T02:58:23-04:00"/>
+
+<meta property="article:modified_time" content="2018-08-26T02:58:23-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="树莓派3B多系统实践">
+<meta itemprop="description" content="相信大家都有一个共识，树莓派的可折腾性带来的乐趣远大于其本身。正应了那句话，麻雀虽小但五脏俱全。在博主这主要给它定义了三种用途，也对应着三个系统，分别是Raspbian、Kali和OpenWRT。Raspbian可用作日常上网、临时便捷服务器、测试用机等。Kali提供了便利的审计软件及很多受欢迎的开源工具，树莓派搭载它可以随时随地对网络进行测试及管理。当然，OpenWRT实现了回到家它就变身一个智能路由器。相信各位都很喜欢。
+">
+
+
+<meta itemprop="datePublished" content="2018-08-26T02:58:23-04:00" />
+<meta itemprop="dateModified" content="2018-08-26T02:58:23-04:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="树莓派,Raspberry,Kali,Raspbian,OpenWRT," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="树莓派3B多系统实践"/>
+<meta name="twitter:description" content="相信大家都有一个共识，树莓派的可折腾性带来的乐趣远大于其本身。正应了那句话，麻雀虽小但五脏俱全。在博主这主要给它定义了三种用途，也对应着三个系统，分别是Raspbian、Kali和OpenWRT。Raspbian可用作日常上网、临时便捷服务器、测试用机等。Kali提供了便利的审计软件及很多受欢迎的开源工具，树莓派搭载它可以随时随地对网络进行测试及管理。当然，OpenWRT实现了回到家它就变身一个智能路由器。相信各位都很喜欢。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Lucas&#39; Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="https://gohugo.io">
+        <li class="mobile-menu-item">external-link</li>
+      </a>
+  </ul>
+</nav>
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Lucas&#39; Blog
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://gohugo.io" rel="noopener" target="_blank">
+              external-link
+            <i class="iconfont icon-new-window"></i>
+            </a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">树莓派3B多系统实践</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-26 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+              <a href="/categories/tech/"> Tech </a>
+            
+              <a href="/categories/skills/"> Skills </a>
+            
+          </div>
+        <span class="more-meta"> 0 words </span>
+        <span class="more-meta"> 0 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#博主的数梅派">博主的数梅派</a></li>
+<li><a href="#安装多系统">安装多系统</a></li>
+<li><a href="#结语">结语</a></li>
+<li><a href="#责任声明">责任声明</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>相信大家都有一个共识，树莓派的可折腾性带来的乐趣远大于其本身。正应了那句话，麻雀虽小但五脏俱全。在博主这主要给它定义了三种用途，也对应着三个系统，分别是Raspbian、Kali和OpenWRT。Raspbian可用作日常上网、临时便捷服务器、测试用机等。Kali提供了便利的审计软件及很多受欢迎的开源工具，树莓派搭载它可以随时随地对网络进行测试及管理。当然，OpenWRT实现了回到家它就变身一个智能路由器。相信各位都很喜欢。
+</p>
+
+<h2 id="博主的数梅派">博主的数梅派</h2>
+
+<p>我不介意给各位分享博主的树莓派的真容，或者会触发各位一些灵感，博主也很开心了。看图
+<img src="/images/raspberry.jpg" alt="my raspberry" />
+话说细心的各位不知有没看出一些小细节，注意博主的电源处两根输出线，
+黑色那根是1A电流输出，而白色那根是2A输出，这里的移动硬盘是以前退役的笔记本的硬盘改的，至少需要500mA电流可供其稳定运行，直接插在树莓派上可想运转都成问题，这里的Hub带有独立供电口，而且输出电流为1A既保障了硬盘的供电也支持了无线网卡的稳定供电需求。不出意外这20000毫安的充电宝可连续待命24小时以上。</p>
+
+<h2 id="安装多系统">安装多系统</h2>
+
+<p>在正式开始之前先看一下博主硬盘的布局，下面就是最终的效果，这里充分利用了它的价值，一方面给树莓派提供系统支持，另一方面可作系统维护盘及数据拷贝盘使用。所以会觉得分区比较多。
+<img src="/images/Screenshot_2018-08-26_03-49-35.png" alt="my raspberry" />
+Patition 7以前的分区是noobs自己划分的，后面的分区是博主根据需求调整的。Patition 8到Patition 11分别是kali和OpenWRT。Patition 12用作系统UEFI安装盘制作分区，Patition 13用作数据交换的分区，比如日常拷贝数据，Patition 14是Mac OS X 10.13.6安装盘。</p>
+
+<p>（1）在<a href="https://www.raspberrypi.org/downloads/noobs/">https://www.raspberrypi.org/downloads/noobs/</a>页面选择离线版的NOOBS安装包。</p>
+
+<p>（2）将移动硬盘转为传统MBR模式并将其格式化为fat32格式。注意是一个分区。</p>
+
+<p>（3）将离线版NOOBS的zip包解压后复制到移动硬盘的fat32分区的根目录。</p>
+
+<p>（4）需将树莓派3B设置为能够从usb启动，详情请google。</p>
+
+<p>（5）给树莓派加电，它会自动执行noobs的初始化脚本，包括对硬盘分区。在逻辑分区里最大的那个root分区就是需要调整的对象。也就是末尾的那个分区。</p>
+
+<p>（6）在linux下推荐使用gparted工具对其进行进一步的分区操作，先卸载最后一个分区，后缩小它的大小，相应的后面会多出空闲的部分去新建分区。可以参考博主的硬盘结构做相应的调整。</p>
+
+<p>（7）编辑SETTINGS分区下的<code>installed_os.json</code>文件，追加两条启动菜单，其他选项可以不变，只需把<code>name</code>项改成自己的操作系统的名字即可，还有就是系统占用的哪几个分区也要加上。修改后如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[</span>
+ <span class="p">{</span>
+  <span class="nt">&#34;bootable&#34;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span> <span class="p">:</span> <span class="s2">&#34;A port of Debian Stretch for the Raspberry Pi (full desktop version)&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;folder&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Raspbian&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;icon&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Raspbian/Raspbian.png&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span> <span class="p">:</span> <span class="s2">&#34;Raspbian&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;partitions&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;/dev/sda6&#34;</span><span class="p">,</span>
+<span class="s2">&#34;/dev/sda7&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;release_date&#34;</span> <span class="p">:</span> <span class="s2">&#34;2018-06-27&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;supported_models&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;Pi Model&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi 2&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi Zero&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi 3&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi Compute Module 3&#34;</span>
+  <span class="p">]</span>
+ <span class="p">},</span>
+ <span class="p">{</span>
+  <span class="nt">&#34;bootable&#34;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span> <span class="p">:</span> <span class="s2">&#34;A port of Debian Stretch for the Raspberry Pi (full desktop version)&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;folder&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Raspbian&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;icon&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Raspbian/Raspbian.png&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span> <span class="p">:</span> <span class="s2">&#34;Kali&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;partitions&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;/dev/sda8&#34;</span><span class="p">,</span>
+<span class="s2">&#34;/dev/sda9&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;release_date&#34;</span> <span class="p">:</span> <span class="s2">&#34;2018-06-27&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;supported_models&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;Pi Model&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi 2&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi Zero&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi 3&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi Compute Module 3&#34;</span>
+  <span class="p">]</span>
+ <span class="p">},</span>
+ <span class="p">{</span>
+  <span class="nt">&#34;bootable&#34;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span> <span class="p">:</span> <span class="s2">&#34;A port of Debian Stretch for the Raspberry Pi (full desktop version)&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;folder&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Raspbian&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;icon&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Raspbian/Raspbian.png&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span> <span class="p">:</span> <span class="s2">&#34;OpenWRT&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;partitions&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;/dev/sda10&#34;</span><span class="p">,</span>
+<span class="s2">&#34;/dev/sda11&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;release_date&#34;</span> <span class="p">:</span> <span class="s2">&#34;2018-06-27&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;supported_models&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;Pi Model&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi 2&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi Zero&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi 3&#34;</span><span class="p">,</span>
+<span class="s2">&#34;Pi Compute Module 3&#34;</span>
+  <span class="p">]</span>
+ <span class="p">}</span>
+<span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>（8）将Kali for pi3和OpenWrt的系统解压出image文件，后在linux下进行挂载，使用<code>cp -a src_dir dist_dir</code>命令将对应分区的内容保持原属性拷贝到移动硬盘的分区。</p>
+
+<p>（9）在kali的启动分区下编辑加入<code>os_config.json</code>文件，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+ <span class="nt">&#34;description&#34;</span> <span class="p">:</span> <span class="s2">&#34;A port of Debian Stretch for the Raspberry Pi (full desktop version)&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;flavour&#34;</span> <span class="p">:</span> <span class="s2">&#34;Kali&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;imagefolder&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/Kali&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;keyboard&#34;</span> <span class="p">:</span> <span class="s2">&#34;gb&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;language&#34;</span> <span class="p">:</span> <span class="s2">&#34;en&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;partitions&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;/dev/sda8&#34;</span><span class="p">,</span>
+<span class="s2">&#34;/dev/sda9&#34;</span>
+ <span class="p">],</span>
+ <span class="nt">&#34;release_date&#34;</span> <span class="p">:</span> <span class="s2">&#34;2018-06-27&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;videomode&#34;</span> <span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>（10）修改kali启动分区下文件<code>cmdline.txt</code>的root分区为实际的位置<code>/dev/sda9</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dwc_otg.fiq_fix_enable<span class="o">=</span><span class="m">2</span> <span class="nv">console</span><span class="o">=</span>ttyAMA0,115200 <span class="nv">kgdboc</span><span class="o">=</span>ttyAMA0,115200 <span class="nv">console</span><span class="o">=</span>tty1 <span class="nv">root</span><span class="o">=</span>/dev/sda9 <span class="nv">rootfstype</span><span class="o">=</span>ext4 rootwait <span class="nv">rootflags</span><span class="o">=</span>noload net.ifnames<span class="o">=</span><span class="m">0</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>（11）修改kali分区<code>/dev/sda9</code>下<code>etc/fstab</code>所对应的启动分区和root分区即可完成kali的初始化配置，至此可选择从Kali菜单启动了。</p>
+
+<p>（12）在OpenWRT的启动分区下编辑加入<code>os_config.json</code>文件，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+ <span class="nt">&#34;description&#34;</span> <span class="p">:</span> <span class="s2">&#34;A port of Debian Stretch for the Raspberry Pi (full desktop version)&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;flavour&#34;</span> <span class="p">:</span> <span class="s2">&#34;Kali&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;imagefolder&#34;</span> <span class="p">:</span> <span class="s2">&#34;/mnt/os/OpenWRT&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;keyboard&#34;</span> <span class="p">:</span> <span class="s2">&#34;gb&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;language&#34;</span> <span class="p">:</span> <span class="s2">&#34;en&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;partitions&#34;</span> <span class="p">:</span> <span class="p">[</span>
+<span class="s2">&#34;/dev/sda10&#34;</span><span class="p">,</span>
+<span class="s2">&#34;/dev/sda11&#34;</span>
+ <span class="p">],</span>
+ <span class="nt">&#34;release_date&#34;</span> <span class="p">:</span> <span class="s2">&#34;2018-06-27&#34;</span><span class="p">,</span>
+ <span class="nt">&#34;videomode&#34;</span> <span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>（13）修改OpenWRT启动分区下<code>cmdline.txt</code>为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dwc_otg.lpm_enable<span class="o">=</span><span class="m">0</span> <span class="nv">console</span><span class="o">=</span>serial0,115200 <span class="nv">kgdboc</span><span class="o">=</span>serial0,115200 <span class="nv">console</span><span class="o">=</span>tty1 <span class="nv">root</span><span class="o">=</span>/dev/sda11 <span class="nv">rootfstype</span><span class="o">=</span>squashfs,ext4 rootwait</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="结语">结语</h2>
+
+<p>到此，基本实现了树莓派的多系统安装，文中有些跳跃的地方，但都是经过实践证明过的，需要各位多花些心思折腾，写的不是太细，望见谅。重要的是思路。</p>
+
+<h2 id="责任声明">责任声明</h2>
+
+<p>希望各位遵守法律，本博文仅作学习研究分享，不得利用于损害他人利益之事。</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Lucas Wilson</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-08-26</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+          
+          <a href="/tags/raspberry/">Raspberry</a>
+          
+          <a href="/tags/kali/">Kali</a>
+          
+          <a href="/tags/raspbian/">Raspbian</a>
+          
+          <a href="/tags/openwrt/">OpenWRT</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/firefox_through_multi_proxy/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Firefox浏览器自定义指定多个出口代理</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/asciinema-somthing-stuff/">
+            <span class="next-text nav-default">asciinema录制终端会话并通过网页展示</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lucashell@protonmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+      <a href="https://twitter.com/lucaswi49152666" rel="me noopener" class="iconfont icon-twitter"
+        title="twitter" target="_blank">
+      </a>
+      <a href="https://www.facebook.com/lucaswilson02" rel="me noopener" class="iconfont icon-facebook"
+        title="facebook" target="_blank">
+      </a>
+      <a href="https://github.com/luxshell" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+      <a href="https://weibo.com/p/1005056539138381/home?from=page_100505&amp;mod=TAB&amp;is_all=1#place" rel="me noopener" class="iconfont icon-weibo"
+        title="weibo" target="_blank">
+      </a>
+      <a href="https://www.zhihu.com/people/lucaswilson-78/activities" rel="me noopener" class="iconfont icon-zhihu"
+        title="zhihu" target="_blank">
+      </a>
+  <a href="https://luxshell.github.io/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2017 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">Lucas Wilson</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+
+</body>
+</html>

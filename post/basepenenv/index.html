@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>构建网络攻防演练环境基本雏形 - Lucas - An InfoSec Lover</title>
+  <link rel="alternate" hreflang="en" href="https://luxshell.github.io/" />
+<link rel="stylesheet" type="text/css" href="/css/asciinema-player.css" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Lucas Wilson" />
+  <meta name="description" content="网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。
+
+" />
+
+  <meta name="keywords" content="Hugo, theme, jane" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+<link rel="canonical" href="https://luxshell.github.io/post/basepenenv/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="构建网络攻防演练环境基本雏形" />
+<meta property="og:description" content="网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luxshell.github.io/post/basepenenv/" />
+
+
+
+<meta property="article:published_time" content="2018-09-18T03:22:14&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-09-18T03:22:14&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="构建网络攻防演练环境基本雏形">
+<meta itemprop="description" content="网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。
+
+">
+
+
+<meta itemprop="datePublished" content="2018-09-18T03:22:14&#43;08:00" />
+<meta itemprop="dateModified" content="2018-09-18T03:22:14&#43;08:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="kali,openWRT,gns3,nat,vmware,firewall," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="构建网络攻防演练环境基本雏形"/>
+<meta name="twitter:description" content="网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Lucas&#39; Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="https://gohugo.io">
+        <li class="mobile-menu-item">external-link</li>
+      </a>
+  </ul>
+</nav>
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Lucas&#39; Blog
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/about/">About</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://gohugo.io" rel="noopener" target="_blank">
+              external-link
+            <i class="iconfont icon-new-window"></i>
+            </a>
+          
+
+        
+
+      </li>
+    
+  </ul>
+</nav>
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">构建网络攻防演练环境基本雏形</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-18 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+              <a href="/categories/tech/"> Tech </a>
+            
+              <a href="/categories/training/"> Training </a>
+            
+          </div>
+        <span class="more-meta"> 0 words </span>
+        <span class="more-meta"> 0 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#小插曲">小插曲</a></li>
+<li><a href="#网络设计">网络设计</a>
+<ul>
+<li><a href="#域名设定">域名设定</a></li>
+<li><a href="#区域简述">区域简述</a>
+<ul>
+<li><a href="#渗透区">渗透区</a></li>
+<li><a href="#模拟外网区">模拟外网区</a></li>
+<li><a href="#客户区">客户区</a></li>
+</ul></li>
+<li><a href="#实体环境实践">实体环境实践</a>
+<ul>
+<li><a href="#宿主机情况">宿主机情况</a></li>
+<li><a href="#虚拟资源分配">虚拟资源分配</a></li>
+</ul></li>
+<li><a href="#软件环境的布置">软件环境的布置</a>
+<ul>
+<li><a href="#0927-nat-internet">[0927]nat(Internet)</a></li>
+<li><a href="#0925-router-internet">[0925]router(Internet)</a></li>
+<li><a href="#0927-vps-internet">[0927]vps(Internet)</a></li>
+<li><a href="#0918-proxy-pen">[0918]proxy(Pen)</a></li>
+<li><a href="#0918-kali-pen">[0918]kali(Pen)</a></li>
+<li><a href="#0928-pfsense-cstmr">[0928]pfSense(cstmr)</a></li>
+<li><a href="#1002-web-cstmr">[1002]web(cstmr)</a></li>
+<li><a href="#0927-openwrt-cstmr">[0927]openWRT(cstmr)</a></li>
+<li><a href="#0927-hostpot-cstmr">[0927]hostpot(cstmr)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#结语">结语</a></li>
+<li><a href="#来源和引文">来源和引文</a></li>
+<li><a href="#责任声明">责任声明</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。</p>
+
+<p></p>
+
+<h2 id="小插曲">小插曲</h2>
+
+<p>原本打算利用gns3模拟cisco的ios连接真实vmware主机来完成实验室的建立，但是在实际操作过程中，由于小编的宿主系统为OS X，无法为cloud添加vmnet虚拟网卡，于是所有结构中的路由改用openwrt软路由替换，大家在操作时也没必要去安装gns3了，减少麻烦。</p>
+
+<h2 id="网络设计">网络设计</h2>
+
+<p>基本雏形大致涉及到了10台虚拟机器，考虑到个人机的物理资源有限，请大家主动选择具体位置机器上线，没必要全开，不过保持这个网络模型，会给学习带来很大帮助和便利。先上拓扑图。</p>
+
+<p><img src="/images/basepenENV.jpg" alt="basepenENV" /></p>
+
+<p>根据拓扑，不难看出整个网络环境分三个区，渗透区、模拟外网区、客户区。</p>
+
+<h3 id="域名设定">域名设定</h3>
+
+<p>目标：ttt.org</br>
+VPS：vvv.com</p>
+
+<h3 id="区域简述">区域简述</h3>
+
+<h4 id="渗透区">渗透区</h4>
+
+<p>该区域布置有三台机器，代理服务器，可直接连接外网，用于代理该区域其他机器的出口流量，不采用nat网关的模式，可规避lan口下主机的流量逃逸风险。另外两台分别是kali和win7,Linux审计平台和Win平台，保障各种工具的基础平台支持。Kali的流量转发借助proxychains或者应用自带代理模块，win可借助Proxifier采取白名单形式放行流量。博主基本不怎么用win，以kali为主力系统。</p>
+
+<h4 id="模拟外网区">模拟外网区</h4>
+
+<p>DNS&amp;NAT：其作为dns服务器可优先解析我们自定义的域名，给实验者一种无缝连接外网的错觉，好像ttt.com和vvv.com就布置在公网一样，更具真实性。其同时又充当NAT服务器的角色，可将整个实验环境与因特网相连接，便于内部机器软件升级，而不至于升级软件时还要去打乱网络结构来连接因特网。</br>
+openWRT：在这里它充当主干网络的一个路由器，配置基本的路由功能即可。</br>
+VPS，它模拟一台公网服务器，可用于远程端口转发、作为远程控制软件的服务端等。</p>
+
+<h4 id="客户区">客户区</h4>
+
+<p>ubuntu：作为web服务器发布信息，位于DMZ区。</br>
+pfSense：客户网关出口的安全管理卫士。</br>
+openWRT：充当内网出口防火墙，对流量进行规则限定。</br>
+Admin：网络管理员的机器</br>
+Secure Host：代表不直接连接因特网的机器</br>
+Hostpot：用于可扩展热点提供无线连接，其下可接入安卓及iPhone，模拟无线网络环境。系统可选用linux发行版，接入一个外置usb无线网卡即可满足需求。</p>
+
+<h3 id="实体环境实践">实体环境实践</h3>
+
+<h4 id="宿主机情况">宿主机情况</h4>
+
+<ul>
+<li>操作系统：macOS Mojave 10.14</li>
+<li>CPU：i5 6500 3.19GHz</li>
+<li>RAM：16GB 2400MHz</li>
+<li>两张网卡：
+
+<ul>
+<li>en0=192.168.1.12</li>
+<li>en1=192.168.1.13</li>
+</ul></li>
+</ul>
+
+<h4 id="虚拟资源分配">虚拟资源分配</h4>
+
+<p><strong>[0918]kali(Pen)</strong></p>
+
+<ul>
+<li>操作系统：Kali Linux</li>
+<li>CPU核心数：2</li>
+<li>虚拟磁盘：128GB</li>
+<li>RAM：2048MB</li>
+<li>vmnet1：
+
+<ul>
+<li>eth0=172.16.83.28 netmask 255.255.255.0</li>
+</ul></li>
+</ul>
+
+<p><strong>[0918]win7(Pen)</strong></p>
+
+<ul>
+<li>操作系统：Win 7 Ultmate with sp1</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：128GB</li>
+<li>RAM：2048MB</li>
+<li>vmnet1：
+
+<ul>
+<li>本地连接=172.16.83.29 netmask 255.255.255.0</li>
+</ul></li>
+</ul>
+
+<p><strong>[0918]proxy(Pen)</strong></p>
+
+<ul>
+<li>操作系统：CentOS 7</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：20GB</li>
+<li>RAM：256MB</li>
+<li>vmnet1：
+
+<ul>
+<li>ens33=2.2.2.2 netmask 255.0.0.0 gateway 2.2.2.1 dns 7.7.7.7</li>
+</ul></li>
+<li>vmnet3：
+
+<ul>
+<li>ens38=172.16.83.123 netmask 255.255.255.0</li>
+</ul></li>
+</ul>
+
+<p><strong>[0925]router(Internet)</strong></p>
+
+<ul>
+<li>操作系统：openWRT</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：8GB</li>
+<li>RAM：128MB</li>
+<li>vmnet4
+
+<ul>
+<li>eth0=7.7.7.1 netmask 255.0.0.0 gateway 7.7.7.7 dns 7.7.7.7</li>
+</ul></li>
+<li>vmnet2
+
+<ul>
+<li>eth1=2.2.2.1 netmask 255.0.0.0</li>
+</ul></li>
+<li>vmnet3
+
+<ul>
+<li>eth2=3.3.3.1 netmask 255.0.0.0</li>
+</ul></li>
+<li>vmnet5
+
+<ul>
+<li>eth3=5.5.5.1 netmask 255.0.0.0</li>
+</ul></li>
+</ul>
+
+<p><strong>[0927]nat(Internet)</strong></p>
+
+<ul>
+<li>操作系统：CentOS 7</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：20GB</li>
+<li>RAM：256MB</li>
+<li>bridge
+
+<ul>
+<li>ens33=192.168.1.32 netmask 255.255.255.0 gateway 192.168.1.1 dns 192.168.1.1</li>
+</ul></li>
+<li>vmnet4
+
+<ul>
+<li>ens38=7.7.7.7 netmask 255.0.0.0</li>
+</ul></li>
+</ul>
+
+<p><strong>[0927]vps(Internet)</strong></p>
+
+<ul>
+<li>操作系统：Debian 9</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：64GB</li>
+<li>RAM：512MB</li>
+<li>vmnet3
+
+<ul>
+<li>ens33=3.3.3.3 netmask 255.0.0.0 gateway 3.3.3.1 dns 7.7.7.7</li>
+</ul></li>
+</ul>
+
+<p><strong>[0928]pfSense(cstmr)</strong></p>
+
+<ul>
+<li>操作系统：Debian 9</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：64GB</li>
+<li>RAM：512MB</li>
+<li>vmnet5
+
+<ul>
+<li>em0=5.5.5.5 netmask 255.0.0.0 gateway 5.5.5.1 dns 7.7.7.7</li>
+</ul></li>
+<li>vmnet6
+
+<ul>
+<li>em1=192.168.6.1 netmask 255.255.255.0</li>
+</ul></li>
+<li>vmnet7
+
+<ul>
+<li>em2=192.168.7.1 netmask 255.255.255.0</li>
+</ul></li>
+</ul>
+
+<p><strong>[1002]web(cstmr)</strong></p>
+
+<ul>
+<li>操作系统：CentOS 7</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：20GB</li>
+<li>RAM：256MB</li>
+<li>vmnet6
+
+<ul>
+<li>eth0=192.168.6.100 netmask 255.255.255.0 gateway 192.168.6.1 dns 7.7.7.7</li>
+</ul></li>
+</ul>
+
+<p><strong>[0927]openWRT(cstmr)</strong></p>
+
+<ul>
+<li>操作系统：openWRT</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：8GB</li>
+<li>RAM：128MB</li>
+<li>vmnet7
+
+<ul>
+<li>eth0=192.168.7.200 netmask 255.255.255.0 gateway 192.168.7.1 dns 7.7.7.7</li>
+</ul></li>
+<li>vmnet9
+
+<ul>
+<li>eth1=10.10.9.1 netmask 255.255.255.0</li>
+</ul></li>
+<li>vmnet10
+
+<ul>
+<li>eth2=10.10.10.1 netmask 255.255.255.0</li>
+</ul></li>
+<li>vmnet12
+
+<ul>
+<li>eth3=10.10.12.1 netmask 255.255.255.0</li>
+</ul></li>
+</ul>
+
+<p>[0927]Hostpot(cstmr)</p>
+
+<ul>
+<li>操作系统：CentOS 7</li>
+<li>CPU核心数：1</li>
+<li>虚拟磁盘：20GB</li>
+<li>RAM：256MB</li>
+<li>vmnet12：
+
+<ul>
+<li>eth33=10.10.12.12 netmask 255.255.255.0 gateway 10.10.12.1 dns 7.7.7.7</li>
+</ul></li>
+</ul>
+
+<h3 id="软件环境的布置">软件环境的布置</h3>
+
+<p>这里提前建议大家在安装好基础操作系统后做一次快照，方便恢复到干净的状态。</br>
+为了保障网络的畅通性，我们从模拟外网区开始向渗透区和客户区蔓延部署。</p>
+
+<h4 id="0927-nat-internet">[0927]nat(Internet)</h4>
+
+<p><strong>1、配置网卡</strong></br>
+vmware虚拟网络布置依次为：
+bridge、vmnet4</br>
+ens33接口作为wan口，动态获取ip不需要作修改。</br>
+ens38作为lan口，静态设置。<code>/etc/sysconfig/network-scripts/ifcfg-ens38</code>需要变动的几行如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">BOOTPROTO</span><span class="o">=</span>static
+<span class="nv">IPADDR</span><span class="o">=</span><span class="m">7</span>.7.7.7
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.0.0.0
+<span class="nv">ONBOOT</span><span class="o">=</span>yes</code></pre></td></tr></table>
+</div>
+</div>
+<p>重启网络服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span># systemctl restart network</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>2、防火墙划分区域及开放预定义端口</strong></p>
+
+<p>在centos 7下，默认采用的firewalld，利用firewall-cmd对规则进行添加，它可以看作是iptables的高级版本实现，目的都是给规则库添加规则。</br>
+利用如下命令查看当前规则激活情况，两张网卡ens33、ens38均处于public区域。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1">#  firewall-cmd --list-all
+</span><span class="c1"></span>public <span class="o">(</span>active<span class="o">)</span>
+  target: default
+  icmp-block-inversion: no
+  interfaces: ens33 ens38
+  sources:
+  services: ssh dhcpv6-client
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:</code></pre></td></tr></table>
+</div>
+</div>
+<p>自定义防火墙区域</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --zone=external --add-interface=ens33 --permanent
+</span><span class="c1"></span>The interface is under control of NetworkManager, setting zone to <span class="s1">&#39;external&#39;</span>.
+success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --zone=internal --add-interface=ens38 --permanent
+</span><span class="c1"></span>The interface is under control of NetworkManager, setting zone to <span class="s1">&#39;internal&#39;</span>.
+success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --complete-reload
+</span><span class="c1"></span>success</code></pre></td></tr></table>
+</div>
+</div>
+<p>查看当前激活区域</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --get-active-zones
+</span><span class="c1"></span>internal
+  interfaces: ens38
+external
+  interfaces: ens33</code></pre></td></tr></table>
+</div>
+</div>
+<p>开放53端口，包含tcp及udp协议</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --zone=internal --add-port=53/tcp
+</span><span class="c1"></span>success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --zone=internal --add-port=53/udp
+</span><span class="c1"></span>success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --complete-reload
+</span><span class="c1"></span>success</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>3、本地dns服务器布置</strong></p>
+
+<p>安装bind、bind-utils，bind-utils包含bind客户端程序集，例如dig、host、nslookup等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span># yum install <span class="nb">bind</span> bind-utils</code></pre></td></tr></table>
+</div>
+</div>
+<p>编辑<code>/etc/named.conf</code>配置文件</p>
+
+<p><code>listen-on port 53 { 127.0.0.1; };</code></br>修改为<code>listen-on port 53 { 7.7.7.7; };</code></br>
+<code>allow-query     { localhost; };</code></br>修改为<code>allow-query     { any; };</code></p>
+
+<p>建立本地解析域
+在<code>/etc/named.rfc1912.zones</code>追加如下内容，分别定义<code>ttt.com</code>和<code>vvv.com</code>区域</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">zone <span class="s2">&#34;ttt.com&#34;</span> IN <span class="o">{</span> <span class="c1"># `ttt.com`正向解析区域
+</span><span class="c1"></span>        <span class="nb">type</span> master<span class="p">;</span>
+        file <span class="s2">&#34;ttt.com.zone&#34;</span><span class="p">;</span>
+        allow-update <span class="o">{</span> none<span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+
+zone <span class="s2">&#34;5.5.5.in-addr.arpa&#34;</span> IN <span class="o">{</span> <span class="c1"># `ttt.com`反向解析区域
+</span><span class="c1"></span>        <span class="nb">type</span> master<span class="p">;</span>
+        file <span class="s2">&#34;5.5.5.arpa&#34;</span><span class="p">;</span>
+        allow-update <span class="o">{</span> none<span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+
+zone <span class="s2">&#34;vvv.com&#34;</span> IN <span class="o">{</span> <span class="c1"># `vvv.com`正向解析区域
+</span><span class="c1"></span>        <span class="nb">type</span> master<span class="p">;</span>
+        file <span class="s2">&#34;vvv.com.zone&#34;</span><span class="p">;</span>
+        allow-update <span class="o">{</span> none<span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+
+zone <span class="s2">&#34;3.3.3.in-addr.arpa&#34;</span> IN <span class="o">{</span> <span class="c1"># `vvv.com`反向解析区域
+</span><span class="c1"></span>        <span class="nb">type</span> master<span class="p">;</span>
+        file <span class="s2">&#34;3.3.3.arpa&#34;</span><span class="p">;</span>
+        allow-update <span class="o">{</span> none<span class="p">;</span> <span class="o">}</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>语法检查，检查配置文件的正确性，没有返回提示表示正常，unix哲学，没有消息便是最好的消息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span># named-checkconf</code></pre></td></tr></table>
+</div>
+</div>
+<p>创建区域数据文件，并设置权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># touch /var/named/ttt.com.zone
+</span><span class="c1"></span><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># touch /var/named/vvv.com.zone
+</span><span class="c1"></span><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># chown named:named /var/named/vvv.com.zone
+</span><span class="c1"></span><span class="o">[</span>root@localhost ~<span class="o">]</span># chown named:named /var/named/ttt.com.zone</code></pre></td></tr></table>
+</div>
+</div>
+<p><code>ttt.com</code>正向解析区域数据文件内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># cat /var/named/ttt.com.zone
+</span><span class="c1"></span><span class="nv">$TTL</span> <span class="m">3600</span>
+<span class="nv">$ORIGIN</span> ttt.com.
+@	IN SOA	ns1.ttt.com. dnsadmin.ttt.com. <span class="o">(</span>
+					<span class="m">20181001</span>	<span class="p">;</span> serial
+					1H		<span class="p">;</span> refresh
+					10M		<span class="p">;</span> retry
+					3D		<span class="p">;</span> expire
+					1D <span class="o">)</span>		<span class="p">;</span> minimum
+	IN	NS	ns1
+	IN	MX   <span class="m">10</span>	mx1
+	IN	MX   <span class="m">20</span>	mx2
+		A	<span class="m">5</span>.5.5.5
+ns1	IN	A	<span class="m">5</span>.5.5.6
+mx1	IN	A	<span class="m">5</span>.5.5.7
+mx2	IN	A	<span class="m">5</span>.5.5.8
+www	IN	A	<span class="m">5</span>.5.5.5
+<span class="nb">test</span>	IN	A	<span class="m">5</span>.5.5.4</code></pre></td></tr></table>
+</div>
+</div>
+<p>文件说明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">$TTL 3600       # 设置客户端缓存时间&lt;/br&gt;
+$ORIGIN ttt.com.    # 定义当前区域的名字，下面的@就是替代这个值&lt;/br&gt;
+@       IN      SOA     ttt.com.   dnsadmin.ttt.com. (
+  # SOA：Start Of Authority，起始授权记录； 一个区域解析库有且只能有一个SOA记录，而且必须放在第一条；
+  # ns1.ttt.com. 该域的主域名服务器
+  # dnsadmin.wlm.com. 管理员邮箱
+        20181001      # 序列号：serial
+        1H            # 刷新时间间隔：refresh
+        10M           # 重试时间间隔：retry
+        3D            # 过期时长：expire
+        1D )          # 否定答案的缓存时长:negative answer ttl</pre></td></tr></table>
+</div>
+</div>
+<p><code>ttt.com</code>反向解析区域数据文件内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># cat /var/named/5.5.5.arpa
+</span><span class="c1"></span><span class="nv">$TTL</span> <span class="m">3600</span>
+<span class="nv">$ORIGIN</span> <span class="m">5</span>.5.5.in-addr.arpa.
+@       IN      SOA     ttt.com.    nsadmin.ttt.com. <span class="o">(</span>
+        <span class="m">20181001</span>
+        1H
+        10M
+        3D
+        12H <span class="o">)</span>
+        IN      NS      ns1.ttt.com.
+<span class="m">6</span>       IN      PTR     ns1.ttt.com.
+<span class="m">7</span>	IN      PTR     mx1.ttt.com.
+<span class="m">8</span>	IN      PTR     mx2.ttt.com.
+<span class="m">5</span>       IN      PTR     www.ttt.com.
+<span class="m">4</span>	IN	PTR	test.ttt.com.</code></pre></td></tr></table>
+</div>
+</div>
+<p><code>vvv.com</code>正向解析区域数据文件内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># cat /var/named/vvv.com.zone
+</span><span class="c1"></span><span class="nv">$TTL</span> <span class="m">3600</span>
+<span class="nv">$ORIGIN</span> vvv.com.
+@	IN SOA	ns1.vvv.com. dnsadmin.vvv.com. <span class="o">(</span>
+					<span class="m">20181001</span>	<span class="p">;</span> serial
+					1H		<span class="p">;</span> refresh
+					10M		<span class="p">;</span> retry
+					3D		<span class="p">;</span> expire
+					1D <span class="o">)</span>		<span class="p">;</span> minimum
+	IN	NS	ns1
+	IN	MX   <span class="m">10</span>	mx1
+	IN	MX   <span class="m">20</span>	mx2
+		A	<span class="m">3</span>.3.3.3
+ns1	IN	A	<span class="m">3</span>.3.3.4
+mx1	IN	A	<span class="m">3</span>.3.3.5
+mx2	IN	A	<span class="m">3</span>.3.3.6
+www	IN	A	<span class="m">3</span>.3.3.3
+<span class="nb">test</span>	IN	A	<span class="m">3</span>.3.3.7</code></pre></td></tr></table>
+</div>
+</div>
+<p><code>vvv.com</code>反向解析区域数据文件内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># cat /var/named/3.3.3.arpa
+</span><span class="c1"></span><span class="nv">$TTL</span> <span class="m">3600</span>
+<span class="nv">$ORIGIN</span> <span class="m">3</span>.3.3.in-addr.arpa.
+@       IN      SOA     vvv.com.    nsadmin.vvv.com. <span class="o">(</span>
+        <span class="m">20181001</span>
+        1H
+        10M
+        3D
+        12H <span class="o">)</span>
+        IN      NS      ns1.vvv.com.
+<span class="m">4</span>       IN      PTR     ns1.vvv.com.
+<span class="m">5</span>	IN      PTR     mx1.vvv.com.
+<span class="m">6</span>	IN      PTR     mx2.vvv.com.
+<span class="m">3</span>       IN      PTR     www.vvv.com.
+<span class="m">7</span>	IN	PTR	test.vvv.com.</code></pre></td></tr></table>
+</div>
+</div>
+<p>检查数据文件配置，以<code>ttt.com</code>为例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># named-checkzone ttt.com /var/named/ttt.com.zone
+</span><span class="c1"></span>zone ttt.com/IN: loaded serial <span class="m">20181001</span>
+OK
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># named-checkzone 5.5.5.in-addr.arpa /var/named/5.5.5.arpa
+</span><span class="c1"></span>zone <span class="m">5</span>.5.5.in-addr.arpa/IN: loaded serial <span class="m">20181001</span>
+OK</code></pre></td></tr></table>
+</div>
+</div>
+<p>启动named服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span># systemctl start named.service</code></pre></td></tr></table>
+</div>
+</div>
+<p>设置named开机启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span># systemctl <span class="nb">enable</span> named.service</code></pre></td></tr></table>
+</div>
+</div>
+<p>测试配置是否生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># nslookup
+</span><span class="c1"></span>&gt; server <span class="m">7</span>.7.7.7
+Default server: <span class="m">7</span>.7.7.7
+Address: <span class="m">7</span>.7.7.7#53
+&gt; www.ttt.com
+Server:		<span class="m">7</span>.7.7.7
+Address:	<span class="m">7</span>.7.7.7#53
+
+Name:	www.ttt.com
+Address: <span class="m">5</span>.5.5.5
+&gt; test.ttt.com
+Server:		<span class="m">7</span>.7.7.7
+Address:	<span class="m">7</span>.7.7.7#53
+
+Name:	test.ttt.com
+Address: <span class="m">5</span>.5.5.4
+&gt; <span class="m">3</span>.3.3.3
+Server:		<span class="m">7</span>.7.7.7
+Address:	<span class="m">7</span>.7.7.7#53
+
+<span class="m">3</span>.3.3.3.in-addr.arpa	<span class="nv">name</span> <span class="o">=</span> www.vvv.com.</code></pre></td></tr></table>
+</div>
+</div>
+<p>正如预料中的结果，本地域名服务器配置完成。</p>
+
+<p><strong>4、nat服务配置</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -o ens33 -j MASQUERADE
+</span><span class="c1"></span>success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ens38 -o ens33 -j ACCEPT
+</span><span class="c1"></span>success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ens33 -o ens38 -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span><span class="c1"></span>success
+<span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --complete-reload
+</span><span class="c1"></span>success</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="0925-router-internet">[0925]router(Internet)</h4>
+
+<p><strong>1、网卡配置</strong></br>
+vmware虚拟网络分配依次为
+vmnet2、vmnet3、vmnet4、vmnet5</p>
+
+<p>编辑<code>/etc/config/network</code>配置内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">config interface <span class="s1">&#39;loopback&#39;</span>
+	option ifname <span class="s1">&#39;lo&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ipaddr <span class="s1">&#39;127.0.0.1&#39;</span>
+	option netmask <span class="s1">&#39;255.0.0.0&#39;</span>
+
+config globals <span class="s1">&#39;globals&#39;</span>
+	option ula_prefix <span class="s1">&#39;fdd3:5813:0b23::/48&#39;</span>
+
+config interface <span class="s1">&#39;lan&#39;</span>
+	option ifname <span class="s1">&#39;eth1&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option netmask <span class="s1">&#39;255.0.0.0&#39;</span>
+	option ip6assign <span class="s1">&#39;60&#39;</span>
+	option ipaddr <span class="s1">&#39;2.2.2.1&#39;</span>
+
+config interface <span class="s1">&#39;wan&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ipaddr <span class="s1">&#39;7.7.7.1&#39;</span>
+	option netmask <span class="s1">&#39;255.0.0.0&#39;</span>
+	option gateway <span class="s1">&#39;7.7.7.7&#39;</span>
+	option dns <span class="s1">&#39;7.7.7.7&#39;</span>
+	option ifname <span class="s1">&#39;eth0&#39;</span>
+
+config interface <span class="s1">&#39;lan1&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ifname <span class="s1">&#39;eth2&#39;</span>
+	option netmask <span class="s1">&#39;255.0.0.0&#39;</span>
+	option ipaddr <span class="s1">&#39;3.3.3.1&#39;</span>
+
+config interface <span class="s1">&#39;lan2&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ifname <span class="s1">&#39;eth3&#39;</span>
+	option netmask <span class="s1">&#39;255.0.0.0&#39;</span>
+	option ipaddr <span class="s1">&#39;5.5.5.1&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>重启网络服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@OpenWrt:~# /etc/init.d/network restart</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>2、测试网络畅通性</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@OpenWrt:~# ping -c <span class="m">4</span> www.baidu.com
+PING www.baidu.com <span class="o">(</span><span class="m">14</span>.215.177.39<span class="o">)</span>: <span class="m">56</span> data bytes
+<span class="m">64</span> bytes from <span class="m">14</span>.215.177.39: <span class="nv">seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nv">time</span><span class="o">=</span><span class="m">65</span>.994 ms
+<span class="m">64</span> bytes from <span class="m">14</span>.215.177.39: <span class="nv">seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nv">time</span><span class="o">=</span><span class="m">67</span>.123 ms
+<span class="m">64</span> bytes from <span class="m">14</span>.215.177.39: <span class="nv">seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nv">time</span><span class="o">=</span><span class="m">66</span>.400 ms
+<span class="m">64</span> bytes from <span class="m">14</span>.215.177.39: <span class="nv">seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nv">time</span><span class="o">=</span><span class="m">65</span>.694 ms
+
+--- www.baidu.com ping statistics ---
+<span class="m">4</span> packets transmitted, <span class="m">4</span> packets received, <span class="m">0</span>% packet loss
+round-trip min/avg/max <span class="o">=</span> <span class="m">65</span>.694/66.302/67.123 ms</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>3、防火墙配置</strong></br>
+修改<code>/etc/config/firewall</code>文件下的部分内容，追加lan1和lan2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">config zone
+	option name <span class="s1">&#39;lan&#39;</span>
+	option input <span class="s1">&#39;ACCEPT&#39;</span>
+	option output <span class="s1">&#39;ACCEPT&#39;</span>
+	option forward <span class="s1">&#39;ACCEPT&#39;</span>
+	option network <span class="s1">&#39;lan lan1 lan2&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>重启防火墙</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@OpenWrt:~# /etc/init.d/firewall restart</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="0927-vps-internet">[0927]vps(Internet)</h4>
+
+<p><strong>1、重装vim</strong></br>
+由于键盘方向键问题，这里直接重装vim完整包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@vvv:~# apt-get purge vim-common
+root@vvv:~# apt-get install vim</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>2、网络配置</strong></br>
+vmware虚拟网络连接vmnet3</br>
+对ens33接口作如下修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">auto ens33
+iface ens33 inet static
+address <span class="m">3</span>.3.3.3
+netmask <span class="m">255</span>.0.0.0
+gateway <span class="m">3</span>.3.3.1</code></pre></td></tr></table>
+</div>
+</div>
+<p>重启网络服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@vvv:~# /etc/init.d/networking restart</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>3、自定义指定域名服务器</strong></br>
+安装resolvconf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">root@vvv:~# apt-get install resolvconf</pre></td></tr></table>
+</div>
+</div>
+<p>在<code>cat /etc/resolvconf/resolv.conf.d/base</code>添加如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nameserver <span class="m">7</span>.7.7.7</code></pre></td></tr></table>
+</div>
+</div>
+<p>重启服务并设置开机启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@vvv:~# systemctl restart resolvconf.service
+root@vvv:~# systemctl <span class="nb">enable</span> resolvconf.service</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>4、测试连通性</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">root@vvv:~# ping -c 4 www.baidu.com
+PING www.a.shifen.com (14.215.177.39) 56(84) bytes of data.
+64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=1 ttl=52 time=68.2 ms
+64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=2 ttl=52 time=66.7 ms
+64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=3 ttl=52 time=66.8 ms
+64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=4 ttl=52 time=66.6 ms</pre></td></tr></table>
+</div>
+</div>
+<h4 id="0918-proxy-pen">[0918]proxy(Pen)</h4>
+
+<p>该机器拥有两个接口ens33和ens38,分别对应虚拟网络vmnet2、vmnet1</p>
+
+<p><strong>1、网络配置</strong></br>
+ens33作如下修改，<code>/etc/sysconfig/network-scripts/ifcfg-ens33</code>变动的几行，没有的变量请自行添加。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">BOOTPROTO</span><span class="o">=</span>static
+<span class="nv">IPADDR</span><span class="o">=</span><span class="m">2</span>.2.2.2
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.0.0.0
+<span class="nv">GATEWAY</span><span class="o">=</span><span class="m">2</span>.2.2.1
+<span class="nv">DNS1</span><span class="o">=</span><span class="m">7</span>.7.7.7
+<span class="nv">ONBOOT</span><span class="o">=</span>yes</code></pre></td></tr></table>
+</div>
+</div>
+<p>手动添加一个ens38配置，如果有了的话就没必要执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@ANantes-651-1-49-249 ~<span class="o">]</span># nmcli con add <span class="nb">type</span> ethernet con-name ens38 ifname ens38</code></pre></td></tr></table>
+</div>
+</div>
+<p>ens38作如下修改,<code>/etc/sysconfig/network-scripts/ifcfg-ens38</code>需要变动的几行如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">BOOTPROTO</span><span class="o">=</span>static
+<span class="nv">IPADDR</span><span class="o">=</span><span class="m">172</span>.16.83.123
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.255.255.0
+<span class="nv">ONBOOT</span><span class="o">=</span>yes</code></pre></td></tr></table>
+</div>
+</div>
+<p>重启网络服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[root@localhost ~]# systemctl restart network</pre></td></tr></table>
+</div>
+</div>
+<p><strong>2、防火墙设定</strong></br>
+自定义防火墙区域</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --zone=external --add-interface=ens33 --permanent
+</span><span class="c1"></span><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --zone=internal --add-interface=ens38 --permanent
+</span><span class="c1"></span><span class="o">[</span>root@localhost ~<span class="o">]</span># firewall-cmd --complete-reload</code></pre></td></tr></table>
+</div>
+</div>
+<p>查看当前激活区域</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --get-active-zones
+</span><span class="c1"></span>internal
+  interfaces: ens38
+external
+  interfaces: ens33</code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>3、本地socks5代理布置</strong></br>
+这里采用golang自编译一个socks5服务端，基于优秀的第三方库</br>
+准备一个装有golang编译环境的linux操作系统</br>
+获取第三方库及其依赖库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">lucas@lucas-virtual-machine:~$ proxychains go get github.com/armon/go-socks5
+lucas@lucas-virtual-machine:~$ proxychains go get golang.org/x/net/context</pre></td></tr></table>
+</div>
+</div>
+<p>新建一个文件名为<code>socks5server.go</code>，内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;github.com/armon/go-socks5&#34;</span>
+	<span class="s">&#34;os&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
+	<span class="nx">args</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span>
+	<span class="nx">argc</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">argc</span> <span class="o">!=</span> <span class="mi">3</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">`usage: &#34;host port&#34; example: &#34;socks5server 172.16.83.123 8080&#34; `</span><span class="p">)</span>
+		<span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="nx">srv</span> <span class="o">:=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s">&#34;:&#34;</span><span class="o">+</span><span class="nx">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+	<span class="nx">conf</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">socks5</span><span class="p">.</span><span class="nx">Config</span><span class="p">{}</span>
+	<span class="nx">server</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">socks5</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">conf</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">server</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="nx">srv</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>编译</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">lucas@lucas-virtual-machine:~$ <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv">GOARCH</span><span class="o">=</span>amd64 go build -ldflags <span class="s2">&#34;-s -w&#34;</span> socks5server.go</code></pre></td></tr></table>
+</div>
+</div>
+<p>将得到socks5server二进制文件上传至<code>[0918]proxy(Pen)</code>虚拟机的<code>/usr/bin/</code>目录</p>
+
+<p>创建一个socks5 server的系统服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># cat /etc/systemd/system/socks5server.service
+</span><span class="c1"></span><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Local socks5 server
+<span class="nv">ConditionPathExists</span><span class="o">=</span><span class="p">|</span>/usr/bin
+<span class="nv">After</span><span class="o">=</span>network.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">TimeoutStartSec</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/socks5server <span class="m">172</span>.16.83.123 <span class="m">8080</span>
+<span class="nv">RestartSec</span><span class="o">=</span><span class="m">3</span>
+<span class="nv">Restart</span><span class="o">=</span>always
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></td></tr></table>
+</div>
+</div>
+<p>启动服务并设定开机自启</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[root@localhost ~]# systemctl start socks5server
+[root@localhost ~]# systemctl enable socks5server</pre></td></tr></table>
+</div>
+</div>
+<p>开放8080端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --zone=internal --add-port=8080/tcp
+</span><span class="c1"></span><span class="o">[</span>root@localhost ~<span class="o">]</span># firewall-cmd --complete-reload</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="0918-kali-pen">[0918]kali(Pen)</h4>
+
+<p><strong>1、网络配置</strong></br>
+该机器作为主力攻击机，不需要设定网关及指定代理服务器。</br>
+添加一个静态IP的配置<code>pen</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">root@kali:~# nmcli connection add type ethernet con-name pen ifname eth0 ip4 172.16.83.28</pre></td></tr></table>
+</div>
+</div>
+<p>应用配置令其生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">root@kali:~# nmcli connection up pen ifname eth0</pre></td></tr></table>
+</div>
+</div>
+<p><strong>2、proxychains代理设定</strong></br>
+修改<code>/etc/proxychains.conf</code>下最后一行的代理为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">socks5 	172.16.83.123 8080</pre></td></tr></table>
+</div>
+</div>
+<p>并取消<code>#quiet_mode</code>前的注释</br>
+自定义proxychains的dns解析服务器为<code>7.7.7.7</code>，默认为<code>4.2.2.2</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@kali:~# cat /usr/lib/proxychains3/proxyresolv
+<span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="c1"># This script is called by proxychains to resolve DNS names
+</span><span class="c1"></span>
+<span class="c1"># DNS server used to resolve names
+</span><span class="c1"></span><span class="nv">DNS_SERVER</span><span class="o">=</span><span class="si">${</span><span class="nv">PROXYRESOLV_DNS</span><span class="k">:-</span><span class="nv">7</span><span class="p">.7.7.7</span><span class="si">}</span>
+
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> <span class="o">=</span> <span class="m">0</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+	<span class="nb">echo</span> <span class="s2">&#34;	usage:&#34;</span>
+	<span class="nb">echo</span> <span class="s2">&#34;		proxyresolv &lt;hostname&gt; &#34;</span>
+	<span class="nb">exit</span>
+<span class="k">fi</span>
+
+
+<span class="nb">export</span> <span class="nv">LD_PRELOAD</span><span class="o">=</span>libproxychains.so.3
+dig <span class="nv">$1</span> @<span class="nv">$DNS_SERVER</span> +tcp <span class="p">|</span> awk <span class="s1">&#39;/A.+[0-9]+\.[0-9]+\.[0-9]/{print $5;}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="0928-pfsense-cstmr">[0928]pfSense(cstmr)</h4>
+
+<p>虚拟网络依次为vmnet5、vmnet6、vmnet7</br>
+然后根据向导将em0设置wan、em1设置OPT1、em2设置LAN</br>
+再依次设置ip后通过webGUI进行配置</br>
+启用OPT1并更名为DMZ，如下图
+<img src="/images/pfsense_dmz.png" alt="dmz" />
+转发wan口的80端口到web192.168.6.100：80
+<img src="/images/port_tran.png" alt="dmz" />
+防火墙开放wan口的80端口
+<img src="/images/fw_http.png" alt="dmz" /></p>
+
+<h4 id="1002-web-cstmr">[1002]web(cstmr)</h4>
+
+<p>这里的web服务器暂时借用《metasploit魔鬼训练营》的<code>OWASP_Broken_Web_Apps_VM_0.94</code>虚拟机替代</p>
+
+<p>网络配置，接入vmnet6网络</br>
+编辑<code>/etc/network/interfaces</code>的eth0部分的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">auto eth0
+iface eth0 inet static
+address 192.168.6.100
+netmask 255.255.255.0
+network 192.168.6.0
+gateway 192.168.6.1
+broadcast 192.168.6.255</pre></td></tr></table>
+</div>
+</div>
+<p>重启网络服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">root@owaspbwa:~# /etc/init.d/networking restart</pre></td></tr></table>
+</div>
+</div>
+<p>通过攻击机器打开目标网站
+<img src="/images/www.ttt.com.png" alt="ttt.com" /></p>
+
+<h4 id="0927-openwrt-cstmr">[0927]openWRT(cstmr)</h4>
+
+<p>虚拟网络连接次序vmnet7、vmnet9、vmnet10、vmnet12</br>
+贴出网络配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@OpenWrt:~# cat /etc/config/network
+
+config interface <span class="s1">&#39;loopback&#39;</span>
+	option ifname <span class="s1">&#39;lo&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ipaddr <span class="s1">&#39;127.0.0.1&#39;</span>
+	option netmask <span class="s1">&#39;255.0.0.0&#39;</span>
+
+config globals <span class="s1">&#39;globals&#39;</span>
+	option ula_prefix <span class="s1">&#39;fdb4:b600:9977::/48&#39;</span>
+
+config interface <span class="s1">&#39;lan&#39;</span>
+	option ifname <span class="s1">&#39;eth1&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ipaddr <span class="s1">&#39;10.10.9.1&#39;</span>
+	option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+	option ip6assign <span class="s1">&#39;60&#39;</span>
+
+config interface <span class="s1">&#39;wan&#39;</span>
+	option ifname <span class="s1">&#39;eth0&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ipaddr <span class="s1">&#39;192.168.7.200&#39;</span>
+	option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+	option gateway <span class="s1">&#39;192.168.7.1&#39;</span>
+	option dns <span class="s1">&#39;7.7.7.7&#39;</span>
+
+config interface <span class="s1">&#39;lan1&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ifname <span class="s1">&#39;eth2&#39;</span>
+	option ipaddr <span class="s1">&#39;10.10.10.1&#39;</span>
+	option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+
+config interface <span class="s1">&#39;lan2&#39;</span>
+	option proto <span class="s1">&#39;static&#39;</span>
+	option ifname <span class="s1">&#39;eth0&#39;</span>
+	option ipaddr <span class="s1">&#39;10.10.12.1&#39;</span>
+	option netmask <span class="s1">&#39;255.255.255.0&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>对于各个网络的接口的防火墙规则这里就不详述了，需要时动态调整，本博文的重点在于基础框架的建立。</p>
+
+<h4 id="0927-hostpot-cstmr">[0927]hostpot(cstmr)</h4>
+
+<p>这台虚拟机专门用来开启热点模拟无线环境的，由于博主这里没有合适的usb无线网卡，先不做热点的布置，将虚拟网卡连入vmnet12,配置好网络后测试一下网络连通性即可，下面贴出网络配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@hostpot:~# cat /etc/network/interfaces
+<span class="c1"># This file describes the network interfaces available on your system
+</span><span class="c1"># and how to activate them. For more information, see interfaces(5).
+</span><span class="c1"></span>
+<span class="nb">source</span> /etc/network/interfaces.d/*
+
+<span class="c1"># The loopback network interface
+</span><span class="c1"></span>auto lo
+iface lo inet loopback
+
+<span class="c1"># The primary network interface
+</span><span class="c1"></span>auto ens33
+iface ens33 inet static
+address <span class="m">10</span>.10.12.12
+netmask <span class="m">255</span>.255.255.0
+gateway <span class="m">10</span>.10.12.1</code></pre></td></tr></table>
+</div>
+</div>
+<p>参考前面配置VPS的dns方法一样，自定义dns服务器为7.7.7.7</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@hostpot:~# ping -c <span class="m">2</span> www.ttt.com
+PING www.ttt.com <span class="o">(</span><span class="m">5</span>.5.5.5<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from www.ttt.com <span class="o">(</span><span class="m">5</span>.5.5.5<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">63</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.877 ms
+<span class="m">64</span> bytes from www.ttt.com <span class="o">(</span><span class="m">5</span>.5.5.5<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">63</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.909 ms
+
+--- www.ttt.com ping statistics ---
+<span class="m">2</span> packets transmitted, <span class="m">2</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 1003ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">0</span>.877/0.893/0.909/0.016 ms
+root@hostpot:~# ping -c <span class="m">2</span> www.baidu.com
+PING www.a.shifen.com <span class="o">(</span><span class="m">14</span>.215.177.39<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from <span class="m">14</span>.215.177.39 <span class="o">(</span><span class="m">14</span>.215.177.39<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">50</span> <span class="nv">time</span><span class="o">=</span><span class="m">29</span>.4 ms
+<span class="m">64</span> bytes from <span class="m">14</span>.215.177.39 <span class="o">(</span><span class="m">14</span>.215.177.39<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">50</span> <span class="nv">time</span><span class="o">=</span><span class="m">30</span>.2 ms
+
+--- www.a.shifen.com ping statistics ---
+<span class="m">2</span> packets transmitted, <span class="m">2</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 1225ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">29</span>.460/29.863/30.266/0.403 ms</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="结语">结语</h2>
+
+<p>本博客重点聚焦在基础框架的建立，个别节点没做布置，望各位根据实际情况动态做调整，至此，以后博主基于该环境会更方便制作教程，与大家共享乐趣，更希望各位遵守规则。最后贴上一个全家福</p>
+
+<p><img src="/images/all_machines.png" alt="all_machines.png" /></p>
+
+<h2 id="来源和引文">来源和引文</h2>
+
+<p><a href="https://www.cnblogs.com/heqiuyu/articles/6600326.html">https://www.cnblogs.com/heqiuyu/articles/6600326.html</a></p>
+
+<p><a href="http://blog.51cto.com/11804445/2056629">http://blog.51cto.com/11804445/2056629</a></p>
+
+<h2 id="责任声明">责任声明</h2>
+
+<p>希望各位遵守法律，本博文仅作学习研究分享，不得利用于损害他人利益之事。</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Lucas Wilson</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-09-18</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/kali/">kali</a>
+          
+          <a href="/tags/openwrt/">openWRT</a>
+          
+          <a href="/tags/gns3/">gns3</a>
+          
+          <a href="/tags/nat/">nat</a>
+          
+          <a href="/tags/vmware/">vmware</a>
+          
+          <a href="/tags/firewall/">firewall</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/msf_bind_reverse_meter/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Msf正反向meterpreter会话的巧妙结合</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/my_external_ip_address/">
+            <span class="next-text nav-default">golang实现简易出口IP查看器</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  
+
+  
+
+  
+  </article>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:lucashell@protonmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+      <a href="https://twitter.com/lucaswi49152666" rel="me noopener" class="iconfont icon-twitter"
+        title="twitter" target="_blank">
+      </a>
+      <a href="https://www.facebook.com/lucaswilson02" rel="me noopener" class="iconfont icon-facebook"
+        title="facebook" target="_blank">
+      </a>
+      <a href="https://github.com/luxshell" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+      <a href="https://weibo.com/p/1005056539138381/home?from=page_100505&amp;mod=TAB&amp;is_all=1#place" rel="me noopener" class="iconfont icon-weibo"
+        title="weibo" target="_blank">
+      </a>
+      <a href="https://www.zhihu.com/people/lucaswilson-78/activities" rel="me noopener" class="iconfont icon-zhihu"
+        title="zhihu" target="_blank">
+      </a>
+  <a href="https://luxshell.github.io/index.xml" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2017 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">Lucas Wilson</span></span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+
+</body>
+</html>

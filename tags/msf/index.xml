@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Msf on Lucas - An InfoSec Lover</title>
+    <link>https://luxshell.github.io/tags/msf/</link>
+    <description>Recent content in Msf on Lucas - An InfoSec Lover</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Lucas Wilson</copyright>
+    <lastBuildDate>Wed, 03 Oct 2018 22:19:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://luxshell.github.io/tags/msf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Msf正反向meterpreter会话的巧妙结合</title>
+      <link>https://luxshell.github.io/post/msf_bind_reverse_meter/</link>
+      <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/post/msf_bind_reverse_meter/</guid>
+      <description>&lt;p&gt;测试机器及被测试机器往往大多数情况下都在内网环境下，而且客户的网络边界甚至主机都部署有防火墙，入站请求几乎不怎么灵光，于是广泛流行起了反弹连接，对方机器是否拥有公网ip都能完成操作，主流防火墙对出站请求管理更棘手，反弹具有天生的优势。于是，很多从业人员选择购买一台具有公网IP的服务器，可以通过远程端口转发本地的服务端口到VPS达到接受反弹连接的要求，也可直接在VPS安装需要的服务，本博文要带给各位的是另一种模式。msf软件服务在本地，两边主机分别向VPS发起连接。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

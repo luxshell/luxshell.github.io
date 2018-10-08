@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Lucas - An InfoSec Lover</title>
+    <link>https://luxshell.github.io/tags/</link>
+    <description>Recent content in Tags on Lucas - An InfoSec Lover</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Lucas Wilson</copyright>
+    <lastBuildDate>Mon, 17 Sep 2018 21:51:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://luxshell.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Anonymous</title>
+      <link>https://luxshell.github.io/tags/anonymous/</link>
+      <pubDate>Mon, 17 Sep 2018 21:51:45 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/anonymous/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Asciinema</title>
+      <link>https://luxshell.github.io/tags/asciinema/</link>
+      <pubDate>Sun, 17 Jun 2018 23:03:08 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/asciinema/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Atom</title>
+      <link>https://luxshell.github.io/tags/atom/</link>
+      <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/atom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bind_tcp</title>
+      <link>https://luxshell.github.io/tags/bind_tcp/</link>
+      <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/bind_tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Burg4dos</title>
+      <link>https://luxshell.github.io/tags/burg4dos/</link>
+      <pubDate>Wed, 11 May 2016 10:45:48 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/burg4dos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>External Ip</title>
+      <link>https://luxshell.github.io/tags/external-ip/</link>
+      <pubDate>Mon, 17 Sep 2018 23:00:53 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/external-ip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Firefox</title>
+      <link>https://luxshell.github.io/tags/firefox/</link>
+      <pubDate>Mon, 17 Sep 2018 21:51:45 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/firefox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Firewall</title>
+      <link>https://luxshell.github.io/tags/firewall/</link>
+      <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/firewall/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gns3</title>
+      <link>https://luxshell.github.io/tags/gns3/</link>
+      <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/gns3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://luxshell.github.io/tags/golang/</link>
+      <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://luxshell.github.io/tags/hugo/</link>
+      <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kali</title>
+      <link>https://luxshell.github.io/tags/kali/</link>
+      <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/kali/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://luxshell.github.io/tags/markdown/</link>
+      <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Masscan</title>
+      <link>https://luxshell.github.io/tags/masscan/</link>
+      <pubDate>Sun, 02 Apr 2017 08:33:29 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/masscan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Meterpreter</title>
+      <link>https://luxshell.github.io/tags/meterpreter/</link>
+      <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/meterpreter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Msf</title>
+      <link>https://luxshell.github.io/tags/msf/</link>
+      <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/msf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nat</title>
+      <link>https://luxshell.github.io/tags/nat/</link>
+      <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/nat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nix</title>
+      <link>https://luxshell.github.io/tags/nix/</link>
+      <pubDate>Sun, 17 Jun 2018 23:03:08 -0400</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/nix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nmap</title>
+      <link>https://luxshell.github.io/tags/nmap/</link>
+      <pubDate>Sun, 02 Apr 2017 08:33:29 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/nmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openwrt</title>
+      <link>https://luxshell.github.io/tags/openwrt/</link>
+      <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
+      
+      <guid>https://luxshell.github.io/tags/openwrt/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
