@@ -583,7 +583,7 @@ msf auxiliary&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;scanner/smb/smb_ms17_01
 &lt;h2 id=&#34;视频演示&#34;&gt;视频演示&lt;/h2&gt;
 
 &lt;video width=&#34;720&#34; height=&#34;480&#34; controls&gt;
-  &lt;source src=&#34;http://fileshub.ga:8080/dll.mov&#34;&gt;
+  &lt;source src=&#34;http://fileshub.ga/videos/dll.mov&#34;&gt;
 Your browser does not support the video tag.
 &lt;/video&gt; 
 
@@ -955,7 +955,7 @@ meterpreter &amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&g
 &lt;h2 id=&#34;视频演示&#34;&gt;视频演示&lt;/h2&gt;
 
 &lt;video width=&#34;720&#34; height=&#34;480&#34; controls&gt;
-  &lt;source src=&#34;http://fileshub.ga:8080/meter.mov&#34;&gt;
+  &lt;source src=&#34;http://fileshub.ga/videos/meter.mov&#34;&gt;
 Your browser does not support the video tag.
 &lt;/video&gt; 
 
@@ -2650,7 +2650,7 @@ rtt min/avg/max/mdev &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class
 &lt;h2 id=&#34;视频演示&#34;&gt;视频演示&lt;/h2&gt;
 
 &lt;p&gt;&lt;video width=&#34;720&#34; height=&#34;480&#34; controls&gt;
-  &lt;source src=&#34;http://fileshub.ga:8080/externalip.mov&#34;&gt;
+  &lt;source src=&#34;http://fileshub.ga/videos/externalip.mov&#34;&gt;
 Your browser does not support the video tag.
 &lt;/video&gt;&lt;/p&gt;
 
