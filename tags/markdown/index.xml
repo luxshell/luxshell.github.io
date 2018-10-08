@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on Lucas - An InfoSec Lover</title>
-    <link>https://luxshell.github.io/tags/markdown/</link>
+    <link>https://luxshell.ml/tags/markdown/</link>
     <description>Recent content in Markdown on Lucas - An InfoSec Lover</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Lucas Wilson</copyright>
     <lastBuildDate>Tue, 01 May 2018 09:29:57 -0400</lastBuildDate>
     
-	<atom:link href="https://luxshell.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luxshell.ml/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>将基于hugo的静态博客部署至Github Pages</title>
-      <link>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</link>
+      <link>https://luxshell.ml/post/set-up-hugo-with-github-pages/</link>
       <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</guid>
+      <guid>https://luxshell.ml/post/set-up-hugo-with-github-pages/</guid>
       <description>&lt;p&gt;今天5月1号，是个特别的日子。首先祝愿广大劳动者劳必有获得。怀着一颗冷静的心，开始找回去年这个时候的自己，那时刚接触Github Pages,觉着是个发布博客的不可多得的形式。博主为了能长期养成写博客的习惯还专门布置了一台虚拟机。Ubuntu18.04&amp;hellip;
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>多功能系统维护盘制作及使用</title>
-      <link>https://luxshell.github.io/post/multi-boot-for-recovery/</link>
+      <link>https://luxshell.ml/post/multi-boot-for-recovery/</link>
       <pubDate>Wed, 11 May 2016 10:45:48 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/multi-boot-for-recovery/</guid>
+      <guid>https://luxshell.ml/post/multi-boot-for-recovery/</guid>
       <description>&lt;p&gt;文章开头我总想扯几句，现在PC越来越普及，但是呢，系统面临的威胁也越来越多。比如，病毒侵袭，软件之间的硬件资源竞争及驱动异常等都会导致系统突然崩溃了而无法再次进入系统，通常小伙伴们在这个时候选择该修复引导的就修复引导，该重装的就重装，但这都得需要一个引导盘，临时遇上就去制作很麻烦，那么要是咱们身边的U盘既能用作维护盘又可用作数据盘多好，那好，小编这次就献丑帮大家一个一劳永逸的办法。
 &lt;/p&gt;</description>
     </item>

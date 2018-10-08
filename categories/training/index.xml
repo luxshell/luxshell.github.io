@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Training on Lucas - An InfoSec Lover</title>
-    <link>https://luxshell.github.io/categories/training/</link>
+    <link>https://luxshell.ml/categories/training/</link>
     <description>Recent content in Training on Lucas - An InfoSec Lover</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Lucas Wilson</copyright>
     <lastBuildDate>Tue, 18 Sep 2018 03:22:14 +0800</lastBuildDate>
     
-	<atom:link href="https://luxshell.github.io/categories/training/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luxshell.ml/categories/training/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>构建网络攻防演练环境基本雏形</title>
-      <link>https://luxshell.github.io/post/basepenenv/</link>
+      <link>https://luxshell.ml/post/basepenenv/</link>
       <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/basepenenv/</guid>
+      <guid>https://luxshell.ml/post/basepenenv/</guid>
       <description>&lt;p&gt;网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

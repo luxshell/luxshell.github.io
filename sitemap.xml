@@ -1,380 +1,380 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="https://luxshell.github.io/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://luxshell.ml/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://luxshell.github.io/about/</loc>
+    <loc>https://luxshell.ml/about/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/custom_shellcode_over_reflective_dll_injection/</loc>
+    <loc>https://luxshell.ml/post/custom_shellcode_over_reflective_dll_injection/</loc>
     <lastmod>2018-10-07T16:53:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/msf_bind_reverse_meter/</loc>
+    <loc>https://luxshell.ml/post/msf_bind_reverse_meter/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/basepenenv/</loc>
+    <loc>https://luxshell.ml/post/basepenenv/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/my_external_ip_address/</loc>
+    <loc>https://luxshell.ml/post/my_external_ip_address/</loc>
     <lastmod>2018-09-17T23:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/firefox_through_multi_proxy/</loc>
+    <loc>https://luxshell.ml/post/firefox_through_multi_proxy/</loc>
     <lastmod>2018-09-17T21:51:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/muti-opreating-system-on-pi3b/</loc>
+    <loc>https://luxshell.ml/post/muti-opreating-system-on-pi3b/</loc>
     <lastmod>2018-08-26T02:58:23-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/asciinema-somthing-stuff/</loc>
+    <loc>https://luxshell.ml/post/asciinema-somthing-stuff/</loc>
     <lastmod>2018-06-17T23:03:08-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</loc>
+    <loc>https://luxshell.ml/post/set-up-hugo-with-github-pages/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/nmap_scan_through_proxy/</loc>
+    <loc>https://luxshell.ml/post/nmap_scan_through_proxy/</loc>
     <lastmod>2017-04-02T08:33:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/multi-boot-for-recovery/</loc>
+    <loc>https://luxshell.ml/post/multi-boot-for-recovery/</loc>
     <lastmod>2016-05-11T10:45:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/anonymous/</loc>
+    <loc>https://luxshell.ml/tags/anonymous/</loc>
     <lastmod>2018-09-17T21:51:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/asciinema/</loc>
+    <loc>https://luxshell.ml/tags/asciinema/</loc>
     <lastmod>2018-06-17T23:03:08-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/atom/</loc>
+    <loc>https://luxshell.ml/tags/atom/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/bind_tcp/</loc>
+    <loc>https://luxshell.ml/tags/bind_tcp/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/blog/</loc>
+    <loc>https://luxshell.ml/categories/blog/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/burg4dos/</loc>
+    <loc>https://luxshell.ml/tags/burg4dos/</loc>
     <lastmod>2016-05-11T10:45:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/</loc>
+    <loc>https://luxshell.ml/categories/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/external-ip/</loc>
+    <loc>https://luxshell.ml/tags/external-ip/</loc>
     <lastmod>2018-09-17T23:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/firefox/</loc>
+    <loc>https://luxshell.ml/tags/firefox/</loc>
     <lastmod>2018-09-17T21:51:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/firewall/</loc>
+    <loc>https://luxshell.ml/tags/firewall/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/gns3/</loc>
+    <loc>https://luxshell.ml/tags/gns3/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/golang/</loc>
+    <loc>https://luxshell.ml/tags/golang/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/hugo/</loc>
+    <loc>https://luxshell.ml/tags/hugo/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/kali/</loc>
+    <loc>https://luxshell.ml/tags/kali/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/learning/</loc>
+    <loc>https://luxshell.ml/categories/learning/</loc>
     <lastmod>2018-09-17T23:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/</loc>
+    <loc>https://luxshell.ml/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/markdown/</loc>
+    <loc>https://luxshell.ml/tags/markdown/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/masscan/</loc>
+    <loc>https://luxshell.ml/tags/masscan/</loc>
     <lastmod>2017-04-02T08:33:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/meterpreter/</loc>
+    <loc>https://luxshell.ml/tags/meterpreter/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/msf/</loc>
+    <loc>https://luxshell.ml/tags/msf/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/nat/</loc>
+    <loc>https://luxshell.ml/tags/nat/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/nix/</loc>
+    <loc>https://luxshell.ml/tags/nix/</loc>
     <lastmod>2018-06-17T23:03:08-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/nmap/</loc>
+    <loc>https://luxshell.ml/tags/nmap/</loc>
     <lastmod>2017-04-02T08:33:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/openwrt/</loc>
+    <loc>https://luxshell.ml/tags/openwrt/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/pentesting/</loc>
+    <loc>https://luxshell.ml/categories/pentesting/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/post/</loc>
+    <loc>https://luxshell.ml/post/</loc>
     <lastmod>2018-10-07T16:53:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/proxy/</loc>
+    <loc>https://luxshell.ml/tags/proxy/</loc>
     <lastmod>2018-09-17T21:51:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/proxychains/</loc>
+    <loc>https://luxshell.ml/tags/proxychains/</loc>
     <lastmod>2017-04-02T08:33:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/raspberry/</loc>
+    <loc>https://luxshell.ml/tags/raspberry/</loc>
     <lastmod>2018-08-26T02:58:23-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/raspbian/</loc>
+    <loc>https://luxshell.ml/tags/raspbian/</loc>
     <lastmod>2018-08-26T02:58:23-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/reverse_tcp/</loc>
+    <loc>https://luxshell.ml/tags/reverse_tcp/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/skills/</loc>
+    <loc>https://luxshell.ml/categories/skills/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/</loc>
+    <loc>https://luxshell.ml/tags/</loc>
     <lastmod>2018-09-17T21:51:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/tech/</loc>
+    <loc>https://luxshell.ml/categories/tech/</loc>
     <lastmod>2018-10-03T22:19:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/training/</loc>
+    <loc>https://luxshell.ml/categories/training/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/ubuntu/</loc>
+    <loc>https://luxshell.ml/tags/ubuntu/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/video-record/</loc>
+    <loc>https://luxshell.ml/tags/video-record/</loc>
     <lastmod>2018-06-17T23:03:08-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/vmware/</loc>
+    <loc>https://luxshell.ml/tags/vmware/</loc>
     <lastmod>2018-09-18T03:22:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/vps/</loc>
+    <loc>https://luxshell.ml/tags/vps/</loc>
     <lastmod>2018-09-17T23:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/winly/</loc>
+    <loc>https://luxshell.ml/tags/winly/</loc>
     <lastmod>2016-05-11T10:45:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/categories/writting/</loc>
+    <loc>https://luxshell.ml/categories/writting/</loc>
     <lastmod>2018-05-01T09:29:57-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
+    <loc>https://luxshell.ml/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
     <lastmod>2018-08-26T02:58:23-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luxshell.github.io/tags/%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/</loc>
+    <loc>https://luxshell.ml/tags/%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/</loc>
     <lastmod>2017-04-02T08:33:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

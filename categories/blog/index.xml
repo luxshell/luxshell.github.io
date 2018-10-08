@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Lucas - An InfoSec Lover</title>
-    <link>https://luxshell.github.io/categories/blog/</link>
+    <link>https://luxshell.ml/categories/blog/</link>
     <description>Recent content in Blog on Lucas - An InfoSec Lover</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Lucas Wilson</copyright>
     <lastBuildDate>Wed, 03 Oct 2018 22:19:19 +0800</lastBuildDate>
     
-	<atom:link href="https://luxshell.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luxshell.ml/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Msf正反向meterpreter会话的巧妙结合</title>
-      <link>https://luxshell.github.io/post/msf_bind_reverse_meter/</link>
+      <link>https://luxshell.ml/post/msf_bind_reverse_meter/</link>
       <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/msf_bind_reverse_meter/</guid>
+      <guid>https://luxshell.ml/post/msf_bind_reverse_meter/</guid>
       <description>&lt;p&gt;测试机器及被测试机器往往大多数情况下都在内网环境下，而且客户的网络边界甚至主机都部署有防火墙，入站请求几乎不怎么灵光，于是广泛流行起了反弹连接，对方机器是否拥有公网ip都能完成操作，主流防火墙对出站请求管理更棘手，反弹具有天生的优势。于是，很多从业人员选择购买一台具有公网IP的服务器，可以通过远程端口转发本地的服务端口到VPS达到接受反弹连接的要求，也可直接在VPS安装需要的服务，本博文要带给各位的是另一种模式。msf软件服务在本地，两边主机分别向VPS发起连接。
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>构建网络攻防演练环境基本雏形</title>
-      <link>https://luxshell.github.io/post/basepenenv/</link>
+      <link>https://luxshell.ml/post/basepenenv/</link>
       <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/basepenenv/</guid>
+      <guid>https://luxshell.ml/post/basepenenv/</guid>
       <description>&lt;p&gt;网络攻防环境本身没有一个固定的形态，在不同的客户环境将面临一个不同甚至全新的拓扑，实际情况给网络攻防的学习也带来了挑战。如果有一个基础的完整攻防演练架子，有模拟外网的部分，也有目标环境和渗透的环境，且能够在需要的时候动态加入主机，还不影响连接外网升级软件。尤其像博主这样的安全从业者，偶尔会共享一些技巧，或者你也刚好需要给公司其他人员做培训，模拟真实环境，会让大家更加快速摸清情况。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -35,10 +35,10 @@
     
     <item>
       <title>golang实现简易出口IP查看器</title>
-      <link>https://luxshell.github.io/post/my_external_ip_address/</link>
+      <link>https://luxshell.ml/post/my_external_ip_address/</link>
       <pubDate>Mon, 17 Sep 2018 23:00:53 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/my_external_ip_address/</guid>
+      <guid>https://luxshell.ml/post/my_external_ip_address/</guid>
       <description>&lt;p&gt;出于乐趣，想做一个简易的出口IP查看器，放到自己的VPS上，可以随时查看自己的IP信息，顺便学习golang实现简单http服务器。与各位分享。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -46,10 +46,10 @@
     
     <item>
       <title>Firefox浏览器自定义指定多个出口代理</title>
-      <link>https://luxshell.github.io/post/firefox_through_multi_proxy/</link>
+      <link>https://luxshell.ml/post/firefox_through_multi_proxy/</link>
       <pubDate>Mon, 17 Sep 2018 21:51:45 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/firefox_through_multi_proxy/</guid>
+      <guid>https://luxshell.ml/post/firefox_through_multi_proxy/</guid>
       <description>&lt;p&gt;Firefox深受专业人员青睐，其中一个原因在于它提供了独立的代理配置模块，当然chrome也有提供，但操作起来麻烦，Linux上需要指定参数&lt;/br&gt;&lt;code&gt;--proxy-server=&amp;quot;socks5://myproxy:8080&amp;quot;&lt;/code&gt;，至于win上，至今还不知道如何自定义多个出口代理的方式。所以今天主角是Firefox。日常工作中，人们希望上网有多个线路的选择，固定出口IP代理、动态变换IP代理、匿名代理等，为避免交叉污染，博主带来了win及*nix类平台的解决方式。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -57,40 +57,40 @@
     
     <item>
       <title>树莓派3B多系统实践</title>
-      <link>https://luxshell.github.io/post/muti-opreating-system-on-pi3b/</link>
+      <link>https://luxshell.ml/post/muti-opreating-system-on-pi3b/</link>
       <pubDate>Sun, 26 Aug 2018 02:58:23 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/muti-opreating-system-on-pi3b/</guid>
+      <guid>https://luxshell.ml/post/muti-opreating-system-on-pi3b/</guid>
       <description>&lt;p&gt;相信大家都有一个共识，树莓派的可折腾性带来的乐趣远大于其本身。正应了那句话，麻雀虽小但五脏俱全。在博主这主要给它定义了三种用途，也对应着三个系统，分别是Raspbian、Kali和OpenWRT。Raspbian可用作日常上网、临时便捷服务器、测试用机等。Kali提供了便利的审计软件及很多受欢迎的开源工具，树莓派搭载它可以随时随地对网络进行测试及管理。当然，OpenWRT实现了回到家它就变身一个智能路由器。相信各位都很喜欢。
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>asciinema录制终端会话并通过网页展示</title>
-      <link>https://luxshell.github.io/post/asciinema-somthing-stuff/</link>
+      <link>https://luxshell.ml/post/asciinema-somthing-stuff/</link>
       <pubDate>Sun, 17 Jun 2018 23:03:08 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/asciinema-somthing-stuff/</guid>
+      <guid>https://luxshell.ml/post/asciinema-somthing-stuff/</guid>
       <description>&lt;p&gt;今天又是一个特殊的日子，也不知为何，老是在这样的日子来写东西，首先得祝大家端午节快乐。今天小编要带给大家一个好东西&amp;ndash;asciinema，一款传说中能记录终端会话的工具，重点是能够在视频播放的同时进行复制，读到这里，机制的小伙伴们估计已经清楚的知道其实不是真实的视频。小编在很久以前就得知其分享操作之便利性，幸得今日有空，将之与大家共享，录制视屏并在网页中引用。
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>将基于hugo的静态博客部署至Github Pages</title>
-      <link>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</link>
+      <link>https://luxshell.ml/post/set-up-hugo-with-github-pages/</link>
       <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/set-up-hugo-with-github-pages/</guid>
+      <guid>https://luxshell.ml/post/set-up-hugo-with-github-pages/</guid>
       <description>&lt;p&gt;今天5月1号，是个特别的日子。首先祝愿广大劳动者劳必有获得。怀着一颗冷静的心，开始找回去年这个时候的自己，那时刚接触Github Pages,觉着是个发布博客的不可多得的形式。博主为了能长期养成写博客的习惯还专门布置了一台虚拟机。Ubuntu18.04&amp;hellip;
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>nmap通过代理进行端口扫描</title>
-      <link>https://luxshell.github.io/post/nmap_scan_through_proxy/</link>
+      <link>https://luxshell.ml/post/nmap_scan_through_proxy/</link>
       <pubDate>Sun, 02 Apr 2017 08:33:29 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/nmap_scan_through_proxy/</guid>
+      <guid>https://luxshell.ml/post/nmap_scan_through_proxy/</guid>
       <description>&lt;p&gt;在渗透测试过程中，当你有幸得到一个入口，需要对其内部进一步探测，比如端口扫描，有人会在入口安装个nmap或者masscan之类的知名软体，有人会自己实现一个简易的端口多线程扫描程式，而还有人更乐意借助入口暂时开放一个代理端口，不仅完成端口扫描，也为后续渗透banner获取等提供便利。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -98,10 +98,10 @@
     
     <item>
       <title>多功能系统维护盘制作及使用</title>
-      <link>https://luxshell.github.io/post/multi-boot-for-recovery/</link>
+      <link>https://luxshell.ml/post/multi-boot-for-recovery/</link>
       <pubDate>Wed, 11 May 2016 10:45:48 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/multi-boot-for-recovery/</guid>
+      <guid>https://luxshell.ml/post/multi-boot-for-recovery/</guid>
       <description>&lt;p&gt;文章开头我总想扯几句，现在PC越来越普及，但是呢，系统面临的威胁也越来越多。比如，病毒侵袭，软件之间的硬件资源竞争及驱动异常等都会导致系统突然崩溃了而无法再次进入系统，通常小伙伴们在这个时候选择该修复引导的就修复引导，该重装的就重装，但这都得需要一个引导盘，临时遇上就去制作很麻烦，那么要是咱们身边的U盘既能用作维护盘又可用作数据盘多好，那好，小编这次就献丑帮大家一个一劳永逸的办法。
 &lt;/p&gt;</description>
     </item>

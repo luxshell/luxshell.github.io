@@ -2,76 +2,76 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Lucas - An InfoSec Lover</title>
-    <link>https://luxshell.github.io/categories/</link>
+    <link>https://luxshell.ml/categories/</link>
     <description>Recent content in Categories on Lucas - An InfoSec Lover</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Lucas Wilson</copyright>
     <lastBuildDate>Wed, 03 Oct 2018 22:19:19 +0800</lastBuildDate>
     
-	<atom:link href="https://luxshell.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luxshell.ml/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog</title>
-      <link>https://luxshell.github.io/categories/blog/</link>
+      <link>https://luxshell.ml/categories/blog/</link>
       <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/categories/blog/</guid>
+      <guid>https://luxshell.ml/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Learning</title>
-      <link>https://luxshell.github.io/categories/learning/</link>
+      <link>https://luxshell.ml/categories/learning/</link>
       <pubDate>Mon, 17 Sep 2018 23:00:53 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/categories/learning/</guid>
+      <guid>https://luxshell.ml/categories/learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pentesting</title>
-      <link>https://luxshell.github.io/categories/pentesting/</link>
+      <link>https://luxshell.ml/categories/pentesting/</link>
       <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/categories/pentesting/</guid>
+      <guid>https://luxshell.ml/categories/pentesting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Skills</title>
-      <link>https://luxshell.github.io/categories/skills/</link>
+      <link>https://luxshell.ml/categories/skills/</link>
       <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/categories/skills/</guid>
+      <guid>https://luxshell.ml/categories/skills/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tech</title>
-      <link>https://luxshell.github.io/categories/tech/</link>
+      <link>https://luxshell.ml/categories/tech/</link>
       <pubDate>Wed, 03 Oct 2018 22:19:19 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/categories/tech/</guid>
+      <guid>https://luxshell.ml/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Training</title>
-      <link>https://luxshell.github.io/categories/training/</link>
+      <link>https://luxshell.ml/categories/training/</link>
       <pubDate>Tue, 18 Sep 2018 03:22:14 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/categories/training/</guid>
+      <guid>https://luxshell.ml/categories/training/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Writting</title>
-      <link>https://luxshell.github.io/categories/writting/</link>
+      <link>https://luxshell.ml/categories/writting/</link>
       <pubDate>Tue, 01 May 2018 09:29:57 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/categories/writting/</guid>
+      <guid>https://luxshell.ml/categories/writting/</guid>
       <description></description>
     </item>
     

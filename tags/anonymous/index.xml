@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Anonymous on Lucas - An InfoSec Lover</title>
-    <link>https://luxshell.github.io/tags/anonymous/</link>
+    <link>https://luxshell.ml/tags/anonymous/</link>
     <description>Recent content in Anonymous on Lucas - An InfoSec Lover</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Lucas Wilson</copyright>
     <lastBuildDate>Mon, 17 Sep 2018 21:51:45 +0800</lastBuildDate>
     
-	<atom:link href="https://luxshell.github.io/tags/anonymous/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luxshell.ml/tags/anonymous/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Firefox浏览器自定义指定多个出口代理</title>
-      <link>https://luxshell.github.io/post/firefox_through_multi_proxy/</link>
+      <link>https://luxshell.ml/post/firefox_through_multi_proxy/</link>
       <pubDate>Mon, 17 Sep 2018 21:51:45 +0800</pubDate>
       
-      <guid>https://luxshell.github.io/post/firefox_through_multi_proxy/</guid>
+      <guid>https://luxshell.ml/post/firefox_through_multi_proxy/</guid>
       <description>&lt;p&gt;Firefox深受专业人员青睐，其中一个原因在于它提供了独立的代理配置模块，当然chrome也有提供，但操作起来麻烦，Linux上需要指定参数&lt;/br&gt;&lt;code&gt;--proxy-server=&amp;quot;socks5://myproxy:8080&amp;quot;&lt;/code&gt;，至于win上，至今还不知道如何自定义多个出口代理的方式。所以今天主角是Firefox。日常工作中，人们希望上网有多个线路的选择，固定出口IP代理、动态变换IP代理、匿名代理等，为避免交叉污染，博主带来了win及*nix类平台的解决方式。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

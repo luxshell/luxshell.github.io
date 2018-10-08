@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Burg4dos on Lucas - An InfoSec Lover</title>
-    <link>https://luxshell.github.io/tags/burg4dos/</link>
+    <link>https://luxshell.ml/tags/burg4dos/</link>
     <description>Recent content in Burg4dos on Lucas - An InfoSec Lover</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Lucas Wilson</copyright>
     <lastBuildDate>Wed, 11 May 2016 10:45:48 -0400</lastBuildDate>
     
-	<atom:link href="https://luxshell.github.io/tags/burg4dos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luxshell.ml/tags/burg4dos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>多功能系统维护盘制作及使用</title>
-      <link>https://luxshell.github.io/post/multi-boot-for-recovery/</link>
+      <link>https://luxshell.ml/post/multi-boot-for-recovery/</link>
       <pubDate>Wed, 11 May 2016 10:45:48 -0400</pubDate>
       
-      <guid>https://luxshell.github.io/post/multi-boot-for-recovery/</guid>
+      <guid>https://luxshell.ml/post/multi-boot-for-recovery/</guid>
       <description>&lt;p&gt;文章开头我总想扯几句，现在PC越来越普及，但是呢，系统面临的威胁也越来越多。比如，病毒侵袭，软件之间的硬件资源竞争及驱动异常等都会导致系统突然崩溃了而无法再次进入系统，通常小伙伴们在这个时候选择该修复引导的就修复引导，该重装的就重装，但这都得需要一个引导盘，临时遇上就去制作很麻烦，那么要是咱们身边的U盘既能用作维护盘又可用作数据盘多好，那好，小编这次就献丑帮大家一个一劳永逸的办法。
 &lt;/p&gt;</description>
     </item>
