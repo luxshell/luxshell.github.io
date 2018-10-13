@@ -53,6 +53,60 @@
     </item>
     
     <item>
+      <title>Golang基于ssh实现动态端口转发</title>
+      <link>https://luxshell.ml/post/go_ssh_dynamic_tunnel/</link>
+      <pubDate>Sat, 13 Oct 2018 14:29:50 +0800</pubDate>
+      
+      <guid>https://luxshell.ml/post/go_ssh_dynamic_tunnel/</guid>
+      
+        <description>&lt;p&gt;最近在网路上看到golang基于ssh实现本地端口转发和远程端口转发的案例，可就是没有找到动态端口转发的例子，于是自己亲自实现一个。仔细琢磨了一下，其实从原理出发，动态端口转发其实就是一个本地端口转发的一个变种，本地端口只需将流量转发的固定的一个端口，而动态端口转发则基于代理功能可将数据转发到任意主机任意端口。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;实现原理&#34;&gt;实现原理&lt;/h2&gt;
+
+&lt;p&gt;首先向ssh服务端建立ssh连接，在本地机器监听一个socks5代理服务端口，遵循socks5协议接受数据包并解析出发往目的地的网络地址及端口，然后基于ssh官方库的数据转发功能完成数据的转发，从而达到动态端口转发的能力。&lt;/p&gt;
+
+&lt;h2 id=&#34;需求&#34;&gt;需求&lt;/h2&gt;
+
+&lt;p&gt;跨平台，在windows下你还在用plink吗，它不能接出口代理，无法断线重连，何不和我一起来自定制打造一个适合需要的工具。有了它，轻松实现多个ssh嵌套级联，你值得拥有！且看该博文的&lt;a href=&#34;https://luxshell.ml/post/go_ssh_dynamic_tunnel/#实际用用篇&#34;&gt;实际应用篇&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;代码实现篇&#34;&gt;代码实现篇&lt;/h2&gt;
+
+&lt;h2 id=&#34;实际用用篇&#34;&gt;实际用用篇&lt;/h2&gt;
+
+&lt;h3 id=&#34;案例1&#34;&gt;案例1&lt;/h3&gt;
+
+&lt;p&gt;建立一个简单的ssh代理。&lt;/p&gt;
+
+&lt;h3 id=&#34;案例2&#34;&gt;案例2&lt;/h3&gt;
+
+&lt;p&gt;主机不直接联网，需要经过一个其他本地机器socks5代理连接网络。在这种情况下建立安全隧道。&lt;/p&gt;
+
+&lt;h3 id=&#34;案例3&#34;&gt;案例3&lt;/h3&gt;
+
+&lt;p&gt;嵌套级联多个ssh建立安全隧道的两种方式。
+方式一：
+基于前级代理建立安全隧道，需要监听多个端口，好处是可以自由选择从哪个出口出去，越靠后越匿名。&lt;/p&gt;
+
+&lt;p&gt;方式二：只监听一个端口，所有流量都途径指定的多个ssh服务器。&lt;/p&gt;
+
+&lt;h2 id=&#34;视频演示篇&#34;&gt;视频演示篇&lt;/h2&gt;
+
+&lt;h2 id=&#34;来源和引文&#34;&gt;来源和引文&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/armon/go-socks5&#34;&gt;https://github.com/armon/go-socks5&lt;/a&gt;&lt;/br&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/21417223/simple-ssh-port-forward-in-golang&#34;&gt;https://stackoverflow.com/questions/21417223/simple-ssh-port-forward-in-golang&lt;/a&gt;&lt;/br&gt;
+&lt;a href=&#34;https://github.com/arthurpro/go-easyssh&#34;&gt;https://github.com/arthurpro/go-easyssh&lt;/a&gt;&lt;/br&gt;
+&lt;a href=&#34;https://gist.github.com/codref/473351a24a3ef90162cf10857fac0ff3&#34;&gt;https://gist.github.com/codref/473351a24a3ef90162cf10857fac0ff3&lt;/a&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;责任声明&#34;&gt;责任声明&lt;/h2&gt;
+
+&lt;p&gt;希望各位遵守法律，本博文仅作学习研究分享，不得利用于损害他人利益之事。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>反射式DLL注入自定义shellcode</title>
       <link>https://luxshell.ml/post/custom_shellcode_over_reflective_dll_injection/</link>
       <pubDate>Sun, 07 Oct 2018 16:53:44 +0800</pubDate>
